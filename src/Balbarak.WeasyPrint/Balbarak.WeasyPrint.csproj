@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Balbarak.WeasyPrint</RootNamespace>
+    <AssemblyName>Balbarak.WeasyPrint</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
