@@ -1,0 +1,2 @@
+SET PROPER_GTK_FOLDER=<path-to-recently-installed-gtk>
+SET PATH=%PROPER_GTK_FOLDER%;%PATH%

@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balbarak.WeasyPrint.NetCore", "Balbarak.WeasyPrint.NetCore\Balbarak.WeasyPrint.NetCore.csproj", "{58B74DE9-BB9D-4D71-946F-7D4D8F10BB40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Balbarak.WeasyPrint.NetCore", "Balbarak.WeasyPrint.NetCore\Balbarak.WeasyPrint.NetCore.csproj", "{58B74DE9-BB9D-4D71-946F-7D4D8F10BB40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "info", "info", "{6414DF30-02DB-4C33-A86A-D0749EE05D04}"
+	ProjectSection(SolutionItems) = preProject
+		info.txt = info.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
