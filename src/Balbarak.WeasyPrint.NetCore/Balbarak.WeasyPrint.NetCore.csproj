@@ -5,7 +5,1105 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="lib\" />
+    <None Remove="lib\gtk3\2to3-3.7" />
+    <None Remove="lib\gtk3\asn1Coding.exe" />
+    <None Remove="lib\gtk3\asn1Decoding.exe" />
+    <None Remove="lib\gtk3\asn1Parser.exe" />
+    <None Remove="lib\gtk3\autopoint" />
+    <None Remove="lib\gtk3\broadwayd.exe" />
+    <None Remove="lib\gtk3\bunzip2.exe" />
+    <None Remove="lib\gtk3\bzcat.exe" />
+    <None Remove="lib\gtk3\bzcmp" />
+    <None Remove="lib\gtk3\bzdiff" />
+    <None Remove="lib\gtk3\bzegrep" />
+    <None Remove="lib\gtk3\bzfgrep" />
+    <None Remove="lib\gtk3\bzgrep" />
+    <None Remove="lib\gtk3\bzip2.exe" />
+    <None Remove="lib\gtk3\bzip2recover.exe" />
+    <None Remove="lib\gtk3\bzless" />
+    <None Remove="lib\gtk3\bzmore" />
+    <None Remove="lib\gtk3\cjpeg.exe" />
+    <None Remove="lib\gtk3\croco-0.6-config" />
+    <None Remove="lib\gtk3\csslint-0.6.exe" />
+    <None Remove="lib\gtk3\djpeg.exe" />
+    <None Remove="lib\gtk3\edit.dll" />
+    <None Remove="lib\gtk3\edit_test.exe" />
+    <None Remove="lib\gtk3\edit_test_dll.exe" />
+    <None Remove="lib\gtk3\envsubst.exe" />
+    <None Remove="lib\gtk3\fax2ps.exe" />
+    <None Remove="lib\gtk3\fax2tiff.exe" />
+    <None Remove="lib\gtk3\fc-cache.exe" />
+    <None Remove="lib\gtk3\fc-cat.exe" />
+    <None Remove="lib\gtk3\fc-conflist.exe" />
+    <None Remove="lib\gtk3\fc-list.exe" />
+    <None Remove="lib\gtk3\fc-match.exe" />
+    <None Remove="lib\gtk3\fc-pattern.exe" />
+    <None Remove="lib\gtk3\fc-query.exe" />
+    <None Remove="lib\gtk3\fc-scan.exe" />
+    <None Remove="lib\gtk3\fc-validate.exe" />
+    <None Remove="lib\gtk3\freetype-config" />
+    <None Remove="lib\gtk3\fribidi.exe" />
+    <None Remove="lib\gtk3\gdbus-codegen-script.py" />
+    <None Remove="lib\gtk3\gdbus-codegen.exe" />
+    <None Remove="lib\gtk3\gdbus.exe" />
+    <None Remove="lib\gtk3\gdk-pixbuf-csource.exe" />
+    <None Remove="lib\gtk3\gdk-pixbuf-pixdata.exe" />
+    <None Remove="lib\gtk3\gdk-pixbuf-query-loaders.exe" />
+    <None Remove="lib\gtk3\gdk-pixbuf-thumbnailer.exe" />
+    <None Remove="lib\gtk3\gettext.exe" />
+    <None Remove="lib\gtk3\gettext.sh" />
+    <None Remove="lib\gtk3\gettextize" />
+    <None Remove="lib\gtk3\gio-querymodules.exe" />
+    <None Remove="lib\gtk3\gio.exe" />
+    <None Remove="lib\gtk3\glib-compile-resources.exe" />
+    <None Remove="lib\gtk3\glib-compile-schemas.exe" />
+    <None Remove="lib\gtk3\glib-genmarshal-script.py" />
+    <None Remove="lib\gtk3\glib-genmarshal.exe" />
+    <None Remove="lib\gtk3\glib-gettextize" />
+    <None Remove="lib\gtk3\glib-mkenums-script.py" />
+    <None Remove="lib\gtk3\glib-mkenums.exe" />
+    <None Remove="lib\gtk3\gobject-query.exe" />
+    <None Remove="lib\gtk3\gr2fonttest.exe" />
+    <None Remove="lib\gtk3\gresource.exe" />
+    <None Remove="lib\gtk3\gsettings.exe" />
+    <None Remove="lib\gtk3\gspawn-win64-helper-console.exe" />
+    <None Remove="lib\gtk3\gspawn-win64-helper.exe" />
+    <None Remove="lib\gtk3\gtester-report-script.py" />
+    <None Remove="lib\gtk3\gtester-report.exe" />
+    <None Remove="lib\gtk3\gtk-builder-tool.exe" />
+    <None Remove="lib\gtk3\gtk-encode-symbolic-svg.exe" />
+    <None Remove="lib\gtk3\gtk-launch.exe" />
+    <None Remove="lib\gtk3\gtk-query-immodules-3.0.exe" />
+    <None Remove="lib\gtk3\gtk-query-settings.exe" />
+    <None Remove="lib\gtk3\gtk-update-icon-cache-3.0.exe" />
+    <None Remove="lib\gtk3\gtk3-demo-application.exe" />
+    <None Remove="lib\gtk3\gtk3-demo.exe" />
+    <None Remove="lib\gtk3\gtk3-icon-browser.exe" />
+    <None Remove="lib\gtk3\gtk3-widget-factory.exe" />
+    <None Remove="lib\gtk3\hb-ot-shape-closure.exe" />
+    <None Remove="lib\gtk3\hb-shape.exe" />
+    <None Remove="lib\gtk3\hb-subset.exe" />
+    <None Remove="lib\gtk3\hb-view.exe" />
+    <None Remove="lib\gtk3\idle3" />
+    <None Remove="lib\gtk3\idle3.7" />
+    <None Remove="lib\gtk3\imgcmp.exe" />
+    <None Remove="lib\gtk3\imginfo.exe" />
+    <None Remove="lib\gtk3\jasper.exe" />
+    <None Remove="lib\gtk3\jpegtran.exe" />
+    <None Remove="lib\gtk3\json-glib-format.exe" />
+    <None Remove="lib\gtk3\json-glib-validate.exe" />
+    <None Remove="lib\gtk3\libasprintf-0.dll" />
+    <None Remove="lib\gtk3\libatk-1.0-0.dll" />
+    <None Remove="lib\gtk3\libatomic-1.dll" />
+    <None Remove="lib\gtk3\libbz2-1.dll" />
+    <None Remove="lib\gtk3\libcairo-2.dll" />
+    <None Remove="lib\gtk3\libcairo-gobject-2.dll" />
+    <None Remove="lib\gtk3\libcairo-script-interpreter-2.dll" />
+    <None Remove="lib\gtk3\libcharset-1.dll" />
+    <None Remove="lib\gtk3\libcroco-0.6-3.dll" />
+    <None Remove="lib\gtk3\libcrypto-1_1-x64.dll" />
+    <None Remove="lib\gtk3\libdatrie-1.dll" />
+    <None Remove="lib\gtk3\libepoxy-0.dll" />
+    <None Remove="lib\gtk3\libexpat-1.dll" />
+    <None Remove="lib\gtk3\libffi-6.dll" />
+    <None Remove="lib\gtk3\libfontconfig-1.dll" />
+    <None Remove="lib\gtk3\libfreeglut.dll" />
+    <None Remove="lib\gtk3\libfreetype-6.dll" />
+    <None Remove="lib\gtk3\libfribidi-0.dll" />
+    <None Remove="lib\gtk3\libgailutil-3-0.dll" />
+    <None Remove="lib\gtk3\libgcc_s_seh-1.dll" />
+    <None Remove="lib\gtk3\libgdk-3-0.dll" />
+    <None Remove="lib\gtk3\libgdk_pixbuf-2.0-0.dll" />
+    <None Remove="lib\gtk3\libgettextlib-0-19-8-1.dll" />
+    <None Remove="lib\gtk3\libgettextpo-0.dll" />
+    <None Remove="lib\gtk3\libgettextsrc-0-19-8-1.dll" />
+    <None Remove="lib\gtk3\libgio-2.0-0.dll" />
+    <None Remove="lib\gtk3\libglib-2.0-0.dll" />
+    <None Remove="lib\gtk3\libgmodule-2.0-0.dll" />
+    <None Remove="lib\gtk3\libgmp-10.dll" />
+    <None Remove="lib\gtk3\libgmpxx-4.dll" />
+    <None Remove="lib\gtk3\libgobject-2.0-0.dll" />
+    <None Remove="lib\gtk3\libgomp-1.dll" />
+    <None Remove="lib\gtk3\libgraphite2.dll" />
+    <None Remove="lib\gtk3\libgthread-2.0-0.dll" />
+    <None Remove="lib\gtk3\libgtk-3-0.dll" />
+    <None Remove="lib\gtk3\libgtkreftestprivate-0.dll" />
+    <None Remove="lib\gtk3\libharfbuzz-0.dll" />
+    <None Remove="lib\gtk3\libharfbuzz-gobject-0.dll" />
+    <None Remove="lib\gtk3\libharfbuzz-icu-0.dll" />
+    <None Remove="lib\gtk3\libharfbuzz-subset-0.dll" />
+    <None Remove="lib\gtk3\libhistory7.dll" />
+    <None Remove="lib\gtk3\libiconv-2.dll" />
+    <None Remove="lib\gtk3\libintl-8.dll" />
+    <None Remove="lib\gtk3\libjasper-4.dll" />
+    <None Remove="lib\gtk3\libjpeg-8.dll" />
+    <None Remove="lib\gtk3\libjson-glib-1.0-0.dll" />
+    <None Remove="lib\gtk3\liblzma-5.dll" />
+    <None Remove="lib\gtk3\liblzo2-2.dll" />
+    <None Remove="lib\gtk3\libminizip-1.dll" />
+    <None Remove="lib\gtk3\libmpdec-2.dll" />
+    <None Remove="lib\gtk3\libp11-kit-0.dll" />
+    <None Remove="lib\gtk3\libpango-1.0-0.dll" />
+    <None Remove="lib\gtk3\libpangocairo-1.0-0.dll" />
+    <None Remove="lib\gtk3\libpangoft2-1.0-0.dll" />
+    <None Remove="lib\gtk3\libpangowin32-1.0-0.dll" />
+    <None Remove="lib\gtk3\libpcre-1.dll" />
+    <None Remove="lib\gtk3\libpcre16-0.dll" />
+    <None Remove="lib\gtk3\libpcre32-0.dll" />
+    <None Remove="lib\gtk3\libpcrecpp-0.dll" />
+    <None Remove="lib\gtk3\libpcreposix-0.dll" />
+    <None Remove="lib\gtk3\libpixman-1-0.dll" />
+    <None Remove="lib\gtk3\libpng-config" />
+    <None Remove="lib\gtk3\libpng16-16.dll" />
+    <None Remove="lib\gtk3\libpng16-config" />
+    <None Remove="lib\gtk3\libpython3.7m.dll" />
+    <None Remove="lib\gtk3\libquadmath-0.dll" />
+    <None Remove="lib\gtk3\libreadline7.dll" />
+    <None Remove="lib\gtk3\librsvg-2-2.dll" />
+    <None Remove="lib\gtk3\libsqlite3-0.dll" />
+    <None Remove="lib\gtk3\libssl-1_1-x64.dll" />
+    <None Remove="lib\gtk3\libssp-0.dll" />
+    <None Remove="lib\gtk3\libstdc++-6.dll" />
+    <None Remove="lib\gtk3\libsystre-0.dll" />
+    <None Remove="lib\gtk3\libtasn1-6.dll" />
+    <None Remove="lib\gtk3\libtermcap-0.dll" />
+    <None Remove="lib\gtk3\libthai-0.dll" />
+    <None Remove="lib\gtk3\libtiff-5.dll" />
+    <None Remove="lib\gtk3\libtiffxx-5.dll" />
+    <None Remove="lib\gtk3\libtre-5.dll" />
+    <None Remove="lib\gtk3\libturbojpeg.dll" />
+    <None Remove="lib\gtk3\libwinpthread-1.dll" />
+    <None Remove="lib\gtk3\libxml2-2.dll" />
+    <None Remove="lib\gtk3\libzstd.dll" />
+    <None Remove="lib\gtk3\lzmadec.exe" />
+    <None Remove="lib\gtk3\lzmainfo.exe" />
+    <None Remove="lib\gtk3\msgattrib.exe" />
+    <None Remove="lib\gtk3\msgcat.exe" />
+    <None Remove="lib\gtk3\msgcmp.exe" />
+    <None Remove="lib\gtk3\msgcomm.exe" />
+    <None Remove="lib\gtk3\msgconv.exe" />
+    <None Remove="lib\gtk3\msgen.exe" />
+    <None Remove="lib\gtk3\msgexec.exe" />
+    <None Remove="lib\gtk3\msgfilter.exe" />
+    <None Remove="lib\gtk3\msgfmt.exe" />
+    <None Remove="lib\gtk3\msggrep.exe" />
+    <None Remove="lib\gtk3\msginit.exe" />
+    <None Remove="lib\gtk3\msgmerge.exe" />
+    <None Remove="lib\gtk3\msgunfmt.exe" />
+    <None Remove="lib\gtk3\msguniq.exe" />
+    <None Remove="lib\gtk3\ncursesw6-config" />
+    <None Remove="lib\gtk3\ngettext.exe" />
+    <None Remove="lib\gtk3\openssl.exe" />
+    <None Remove="lib\gtk3\p11-kit.exe" />
+    <None Remove="lib\gtk3\pal2rgb.exe" />
+    <None Remove="lib\gtk3\pango-list.exe" />
+    <None Remove="lib\gtk3\pango-view.exe" />
+    <None Remove="lib\gtk3\pcre-config" />
+    <None Remove="lib\gtk3\pcregrep.exe" />
+    <None Remove="lib\gtk3\pcretest.exe" />
+    <None Remove="lib\gtk3\png-fix-itxt.exe" />
+    <None Remove="lib\gtk3\pngfix.exe" />
+    <None Remove="lib\gtk3\ppm2tiff.exe" />
+    <None Remove="lib\gtk3\pydoc3" />
+    <None Remove="lib\gtk3\pydoc3.7" />
+    <None Remove="lib\gtk3\python3-config" />
+    <None Remove="lib\gtk3\python3.7-config" />
+    <None Remove="lib\gtk3\python3.7.exe" />
+    <None Remove="lib\gtk3\python3.7m-config" />
+    <None Remove="lib\gtk3\python3.7m.exe" />
+    <None Remove="lib\gtk3\python3.exe" />
+    <None Remove="lib\gtk3\python3w.exe" />
+    <None Remove="lib\gtk3\pyvenv" />
+    <None Remove="lib\gtk3\pyvenv-3.7" />
+    <None Remove="lib\gtk3\raw2tiff.exe" />
+    <None Remove="lib\gtk3\rdjpgcom.exe" />
+    <None Remove="lib\gtk3\recode-sr-latin.exe" />
+    <None Remove="lib\gtk3\rsvg-convert.exe" />
+    <None Remove="lib\gtk3\rsvg-view-3.exe" />
+    <None Remove="lib\gtk3\sqlite3.exe" />
+    <None Remove="lib\gtk3\sqlite3_analyzer.sh" />
+    <None Remove="lib\gtk3\tcl86.dll" />
+    <None Remove="lib\gtk3\tclsh.exe" />
+    <None Remove="lib\gtk3\tclsh86.exe" />
+    <None Remove="lib\gtk3\tiff2bw.exe" />
+    <None Remove="lib\gtk3\tiff2pdf.exe" />
+    <None Remove="lib\gtk3\tiff2ps.exe" />
+    <None Remove="lib\gtk3\tiff2rgba.exe" />
+    <None Remove="lib\gtk3\tiffcmp.exe" />
+    <None Remove="lib\gtk3\tiffcp.exe" />
+    <None Remove="lib\gtk3\tiffcrop.exe" />
+    <None Remove="lib\gtk3\tiffdither.exe" />
+    <None Remove="lib\gtk3\tiffdump.exe" />
+    <None Remove="lib\gtk3\tiffinfo.exe" />
+    <None Remove="lib\gtk3\tiffmedian.exe" />
+    <None Remove="lib\gtk3\tiffset.exe" />
+    <None Remove="lib\gtk3\tiffsplit.exe" />
+    <None Remove="lib\gtk3\tjbench.exe" />
+    <None Remove="lib\gtk3\tk86.dll" />
+    <None Remove="lib\gtk3\trietool-0.2.exe" />
+    <None Remove="lib\gtk3\trietool.exe" />
+    <None Remove="lib\gtk3\trust.exe" />
+    <None Remove="lib\gtk3\unxz.exe" />
+    <None Remove="lib\gtk3\update-ca-trust" />
+    <None Remove="lib\gtk3\update-mime-database.exe" />
+    <None Remove="lib\gtk3\update-mime-database.exe.manifest" />
+    <None Remove="lib\gtk3\wish.exe" />
+    <None Remove="lib\gtk3\wish86.exe" />
+    <None Remove="lib\gtk3\wrjpgcom.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-agrep.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-captoinfo.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-clear.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-infocmp.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-infotocap.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-reset.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-tabs.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-tic.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-toe.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-tput.exe" />
+    <None Remove="lib\gtk3\x86_64-w64-mingw32-tset.exe" />
+    <None Remove="lib\gtk3\xgettext.exe" />
+    <None Remove="lib\gtk3\xml2-config" />
+    <None Remove="lib\gtk3\xmlcatalog.exe" />
+    <None Remove="lib\gtk3\xmllint.exe" />
+    <None Remove="lib\gtk3\xmlwf.exe" />
+    <None Remove="lib\gtk3\xz.exe" />
+    <None Remove="lib\gtk3\xzcat.exe" />
+    <None Remove="lib\gtk3\xzcmp" />
+    <None Remove="lib\gtk3\xzdec.exe" />
+    <None Remove="lib\gtk3\xzdiff" />
+    <None Remove="lib\gtk3\xzegrep" />
+    <None Remove="lib\gtk3\xzfgrep" />
+    <None Remove="lib\gtk3\xzgrep" />
+    <None Remove="lib\gtk3\xzless" />
+    <None Remove="lib\gtk3\xzmore" />
+    <None Remove="lib\gtk3\zlib1.dll" />
+    <None Remove="lib\gtk3\zstd.exe" />
+    <None Remove="lib\weasyprint.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="lib\gtk3\2to3-3.7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\asn1Coding.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\asn1Decoding.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\asn1Parser.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\autopoint">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\broadwayd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bunzip2.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzcat.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzcmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzdiff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzegrep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzfgrep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzgrep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzip2.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzip2recover.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzless">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\bzmore">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\cjpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\croco-0.6-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\csslint-0.6.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\djpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\edit.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\edit_test.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\edit_test_dll.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\envsubst.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fax2ps.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fax2tiff.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-cache.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-cat.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-conflist.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-list.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-match.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-pattern.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-query.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-scan.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fc-validate.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\freetype-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fribidi.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdbus-codegen-script.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdbus-codegen.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdbus.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdk-pixbuf-csource.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdk-pixbuf-pixdata.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdk-pixbuf-query-loaders.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gdk-pixbuf-thumbnailer.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gettext.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gettext.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gettextize">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gio-querymodules.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gio.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-compile-resources.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-compile-schemas.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-genmarshal-script.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-genmarshal.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-gettextize">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-mkenums-script.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\glib-mkenums.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gobject-query.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gr2fonttest.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gresource.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gsettings.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gspawn-win64-helper-console.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gspawn-win64-helper.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtester-report-script.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtester-report.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk-builder-tool.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk-encode-symbolic-svg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk-launch.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk-query-immodules-3.0.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk-query-settings.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk-update-icon-cache-3.0.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk3-demo-application.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk3-demo.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk3-icon-browser.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\gtk3-widget-factory.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\hb-ot-shape-closure.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\hb-shape.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\hb-subset.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\hb-view.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\idle3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\idle3.7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\imgcmp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\imginfo.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\jasper.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\jpegtran.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\json-glib-format.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\json-glib-validate.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libasprintf-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libatk-1.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libatomic-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libbz2-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libcairo-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libcairo-gobject-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libcairo-script-interpreter-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libcharset-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libcroco-0.6-3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libcrypto-1_1-x64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libdatrie-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libepoxy-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libexpat-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libffi-6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libfontconfig-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libfreeglut.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libfreetype-6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libfribidi-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgailutil-3-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgcc_s_seh-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgdk-3-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgdk_pixbuf-2.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgettextlib-0-19-8-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgettextpo-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgettextsrc-0-19-8-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgio-2.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libglib-2.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgmodule-2.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgmp-10.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgmpxx-4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgobject-2.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgomp-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgraphite2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgthread-2.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgtk-3-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libgtkreftestprivate-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libharfbuzz-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libharfbuzz-gobject-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libharfbuzz-icu-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libharfbuzz-subset-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libhistory7.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libiconv-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libintl-8.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libjasper-4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libjpeg-8.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libjson-glib-1.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\liblzma-5.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\liblzo2-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libminizip-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libmpdec-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libp11-kit-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpango-1.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpangocairo-1.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpangoft2-1.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpangowin32-1.0-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpcre-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpcre16-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpcre32-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpcrecpp-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpcreposix-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpixman-1-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpng-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpng16-16.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpng16-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libpython3.7m.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libquadmath-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libreadline7.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\librsvg-2-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libsqlite3-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libssl-1_1-x64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libssp-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libstdc++-6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libsystre-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libtasn1-6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libtermcap-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libthai-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libtiff-5.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libtiffxx-5.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libtre-5.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libturbojpeg.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libwinpthread-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libxml2-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\libzstd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\lzmadec.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\lzmainfo.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgattrib.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgcat.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgcmp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgcomm.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgconv.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgen.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgexec.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgfilter.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgfmt.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msggrep.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msginit.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgmerge.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msgunfmt.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\msguniq.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\ncursesw6-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\ngettext.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\openssl.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\p11-kit.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pal2rgb.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pango-list.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pango-view.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pcre-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pcregrep.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pcretest.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\png-fix-itxt.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pngfix.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\ppm2tiff.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pydoc3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pydoc3.7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3.7-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3.7.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3.7m-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3.7m.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\python3w.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pyvenv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\pyvenv-3.7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\raw2tiff.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\rdjpgcom.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\recode-sr-latin.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\rsvg-convert.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\rsvg-view-3.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\sqlite3.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\sqlite3_analyzer.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tcl86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tclsh.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tclsh86.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiff2bw.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiff2pdf.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiff2ps.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiff2rgba.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffcmp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffcp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffcrop.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffdither.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffdump.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffinfo.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffmedian.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffset.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tiffsplit.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tjbench.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\tk86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\trietool-0.2.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\trietool.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\trust.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\unxz.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\update-ca-trust">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\update-mime-database.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\update-mime-database.exe.manifest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\wish.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\wish86.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\wrjpgcom.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-agrep.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-captoinfo.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-clear.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-infocmp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-infotocap.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-reset.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-tabs.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-tic.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-toe.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-tput.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\x86_64-w64-mingw32-tset.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xgettext.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xml2-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xmlcatalog.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xmllint.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xmlwf.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xz.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzcat.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzcmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzdec.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzdiff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzegrep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzfgrep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzgrep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzless">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\xzmore">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\zlib1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\zstd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\weasyprint.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
