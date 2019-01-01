@@ -1,0 +1,5 @@
+#!C:\building\msys64\mingw64/bin/python3.7.exe
+
+import pydoc
+if __name__ == '__main__':
+    pydoc.cli()
