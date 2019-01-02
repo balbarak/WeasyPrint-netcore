@@ -10,19 +10,22 @@ namespace Balbarak.WeasyPrint
 {
     public class WeasyPrintClient : IDisposable
     {
+        public event EventHandler OnDataOutput;
+        public event EventHandler OnDataError;
+
         private Process _nativeProccess;
 
         public WeasyPrintClient()
         {
 
         }
-        
+
         public void TestWeasy()
         {
             ExcuteCommand("python.exe weasyprint.exe ../index.html ../test.pdf");
-            
+
         }
-        
+
         public byte[] GeneratePdf(string htmlText)
         {
             byte[] result = null;
@@ -39,16 +42,21 @@ namespace Balbarak.WeasyPrint
                 File.WriteAllText($"{folderPath}{inputFileName}", htmlText);
 
                 ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
-                
+
                 result = File.ReadAllBytes($"{folderPath}{outputFileName}");
 
-                File.Delete($"{folderPath}{inputFileName}");
+                var inputFullName = $"{folderPath}{inputFileName}";
+                var outputFullName = $"{folderPath}{outputFileName}";
 
-                File.Delete($"{folderPath}{outputFileName}");
+                if (File.Exists(inputFullName))
+                    File.Delete(inputFullName);
+
+                if (File.Exists(outputFullName))
+                    File.Delete(outputFullName);
             }
-            catch 
+            catch (Exception ex)
             {
-
+                OnDataError?.Invoke(this, new OutputEventArgs(ex.ToString()));
             }
 
             return result;
@@ -78,7 +86,7 @@ namespace Balbarak.WeasyPrint
             _nativeProccess = new Process();
 
             _nativeProccess.StartInfo.FileName = @"cmd.exe";
-            
+
             _nativeProccess.StartInfo.EnvironmentVariables["PATH"] = "gtk3;%PATH%";
 
             _nativeProccess.StartInfo.EnvironmentVariables["FONTCONFIG_FILE"] = $"{workingDir}\\gtk3\\fonts.config";
@@ -93,7 +101,7 @@ namespace Balbarak.WeasyPrint
             _nativeProccess.OutputDataReceived += OnOutputDataReceived;
             _nativeProccess.ErrorDataReceived += OnErrorDataReceived;
             _nativeProccess.Exited += OnExited;
-            
+
         }
 
         private void OnExited(object sender, EventArgs e)
@@ -103,11 +111,15 @@ namespace Balbarak.WeasyPrint
 
         private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
+            OnDataError?.Invoke(this, new OutputEventArgs(e.Data));
+
             Debug.WriteLine($"Error: {e.Data}");
         }
 
         private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
+            OnDataOutput?.Invoke(this, new OutputEventArgs(e.Data));
+
             Debug.WriteLine(e.Data);
         }
 
@@ -124,7 +136,7 @@ namespace Balbarak.WeasyPrint
                 {
                     _nativeProccess.Kill();
                 }
-                catch 
+                catch
                 {
 
                 }
