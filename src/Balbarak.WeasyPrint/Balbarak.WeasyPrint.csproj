@@ -5,7 +5,7 @@
     <RootNamespace>Balbarak.WeasyPrint</RootNamespace>
     <AssemblyName>Balbarak.WeasyPrint</AssemblyName>
     <Version>0.7.0</Version>
-    <Description>WeasyPrint wrapper for .net and .netcore tested on windows only</Description>
+    <Description>WeasyPrint Wrapper for .net on Windows</Description>
     <Copyright>balbarak 2018</Copyright>
     <RepositoryUrl>https://github.com/balbarak/WeasyPrint-netcore</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
