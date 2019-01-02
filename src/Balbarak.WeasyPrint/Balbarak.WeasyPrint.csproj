@@ -43,6 +43,7 @@
     <None Remove="lib\gtk3\fc-query.exe" />
     <None Remove="lib\gtk3\fc-scan.exe" />
     <None Remove="lib\gtk3\fc-validate.exe" />
+    <None Remove="lib\gtk3\fonts.config" />
     <None Remove="lib\gtk3\freetype-config" />
     <None Remove="lib\gtk3\fribidi.exe" />
     <None Remove="lib\gtk3\gdbus-codegen-script.py" />
@@ -390,6 +391,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="lib\gtk3\fc-validate.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\gtk3\fonts.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="lib\gtk3\freetype-config">

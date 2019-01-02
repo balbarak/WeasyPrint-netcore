@@ -14,7 +14,7 @@ namespace Balbarak.WeasyPrint
 
         public WeasyPrintClient()
         {
-            SetupGtkPath();
+
         }
         
         public void TestWeasy()
@@ -23,6 +23,37 @@ namespace Balbarak.WeasyPrint
             
         }
         
+        public byte[] GeneratePdf(string htmlText)
+        {
+            byte[] result = null;
+
+            try
+            {
+                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
+                var dirSeparator = Path.DirectorySeparatorChar;
+                var folderPath = $"lib{dirSeparator}";
+
+                var inputFileName = $"{fileName}.html";
+                var outputFileName = $"{fileName}.pdf";
+
+                File.WriteAllText($"{folderPath}{inputFileName}", htmlText);
+
+                ExcuteCommand($"weasyprint.exe {inputFileName} {outputFileName} -e utf8");
+                
+                result = File.ReadAllBytes($"{folderPath}{outputFileName}");
+
+                File.Delete($"{folderPath}{inputFileName}");
+
+                File.Delete($"{folderPath}{outputFileName}");
+            }
+            catch 
+            {
+
+            }
+
+            return result;
+        }
+
         private void ExcuteCommand(string cmd)
         {
             InitProccess();
@@ -42,13 +73,17 @@ namespace Balbarak.WeasyPrint
         {
             KillProc();
 
+            var workingDir = $"{Directory.GetCurrentDirectory()}\\lib";
+
             _nativeProccess = new Process();
 
             _nativeProccess.StartInfo.FileName = @"cmd.exe";
             
             _nativeProccess.StartInfo.EnvironmentVariables["PATH"] = "gtk3;%PATH%";
 
-            _nativeProccess.StartInfo.WorkingDirectory = $"{Directory.GetCurrentDirectory()}\\lib";
+            _nativeProccess.StartInfo.EnvironmentVariables["FONTCONFIG_FILE"] = $"{workingDir}\\gtk3\\fonts.config";
+
+            _nativeProccess.StartInfo.WorkingDirectory = workingDir;
             _nativeProccess.StartInfo.UseShellExecute = false;
             _nativeProccess.StartInfo.RedirectStandardInput = true;
             _nativeProccess.StartInfo.RedirectStandardOutput = true;
