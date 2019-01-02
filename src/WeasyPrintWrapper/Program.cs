@@ -17,6 +17,12 @@ namespace WeasyPrintWrapper
                 var data = client.GeneratePdf(html);
 
                 File.WriteAllBytes("test.pdf", data);
+
+                var input = @"C:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\index.html";
+
+                var output= Path.Combine(Directory.GetCurrentDirectory(), "testing.pdf");
+
+                client.GeneratePdf(input, output);
             }
 
             Console.ReadLine();

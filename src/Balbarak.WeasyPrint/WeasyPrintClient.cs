@@ -73,7 +73,10 @@ namespace Balbarak.WeasyPrint
         {
             if (!CheckFiles())
                 InitFiles();
-            
+
+            if (!File.Exists(inputPathFile))
+                throw new FileNotFoundException(inputPathFile);
+
             try
             {
                 LogOutput($"Generating pdf from html file {inputPathFile} to {outputPathFile}");
