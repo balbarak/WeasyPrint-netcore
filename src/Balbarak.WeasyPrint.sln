@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "info", "info", "{6414DF30-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Balbarak.WeasyPrint", "Balbarak.WeasyPrint\Balbarak.WeasyPrint.csproj", "{994C89AF-1335-4409-8BAF-F9A5B9865F88}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3AC1E137-F4E7-4BBB-9504-F286EE89803B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balbarak.WeasyPrint.Test", "Balbarak.WeasyPrint.Test\Balbarak.WeasyPrint.Test.csproj", "{0E24FA4D-C38B-4356-A682-078241FCC799}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +24,16 @@ Global
 		{994C89AF-1335-4409-8BAF-F9A5B9865F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{994C89AF-1335-4409-8BAF-F9A5B9865F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{994C89AF-1335-4409-8BAF-F9A5B9865F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E24FA4D-C38B-4356-A682-078241FCC799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E24FA4D-C38B-4356-A682-078241FCC799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E24FA4D-C38B-4356-A682-078241FCC799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E24FA4D-C38B-4356-A682-078241FCC799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E24FA4D-C38B-4356-A682-078241FCC799} = {3AC1E137-F4E7-4BBB-9504-F286EE89803B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F925553-C10D-4799-942E-5E9D553B0A3E}
