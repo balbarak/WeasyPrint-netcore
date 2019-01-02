@@ -13,8 +13,10 @@ namespace Balbarak.WeasyPrint
 {
     public class WeasyPrintClient : IDisposable
     {
-        public event EventHandler OnDataOutput;
-        public event EventHandler OnDataError;
+        public delegate void WeasyPrintEventHandler(OutputEventArgs e);
+
+        public event WeasyPrintEventHandler OnDataOutput;
+        public event WeasyPrintEventHandler OnDataError;
 
         private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-files");
 
@@ -22,16 +24,19 @@ namespace Balbarak.WeasyPrint
 
         public WeasyPrintClient()
         {
-            if (!CheckFiles())
-                InitFiles();
         }
         
         public byte[] GeneratePdf(string htmlText)
         {
+            if (!CheckFiles())
+                InitFiles();
+
             byte[] result = null;
 
             try
             {
+                LogOutput("Generating pdf from html text ...");
+
                 var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
                 var dirSeparator = Path.DirectorySeparatorChar;
                 
@@ -52,10 +57,13 @@ namespace Balbarak.WeasyPrint
 
                 if (File.Exists(outputFullName))
                     File.Delete(outputFullName);
+
+                LogOutput("Pdf generated successfully");
+
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(this, new OutputEventArgs(ex.ToString()));
+                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
             }
 
             return result;
@@ -63,13 +71,21 @@ namespace Balbarak.WeasyPrint
 
         public void GeneratePdf(string inputPathFile,string outputPathFile)
         {
+            if (!CheckFiles())
+                InitFiles();
+            
             try
             {
+                LogOutput($"Generating pdf from html file {inputPathFile} to {outputPathFile}");
+
                 ExcuteCommand($"python.exe weasyprint.exe {inputPathFile} {outputPathFile} -e utf8");
+
+                LogOutput("Pdf generated successfully");
+
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(this, new OutputEventArgs(ex.ToString()));
+                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
             }
    
         }
@@ -191,12 +207,17 @@ namespace Balbarak.WeasyPrint
 
         private void LogOutput(string data)
         {
-            OnDataOutput?.Invoke(this, new OutputEventArgs(data));
+            if (!string.IsNullOrWhiteSpace(data))
+            {
+                var args = new OutputEventArgs(data);
+
+                OnDataOutput?.Invoke(args);
+            }
         }
 
         private void LogError(string data)
         {
-            OnDataError?.Invoke(this, new OutputEventArgs(data));
+            OnDataError?.Invoke(new OutputEventArgs(data));
         }
 
         public void Dispose()
