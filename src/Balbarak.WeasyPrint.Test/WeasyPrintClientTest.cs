@@ -7,20 +7,29 @@ namespace Balbarak.WeasyPrint.Test
     public class WeasyPrintClientTest
     {
         [Fact]
-        public void SetupGtkPathTest()
+        public void GeneratePdfTest()
         {
             var html = File.ReadAllText("index.html");
 
             using (WeasyPrintClient client = new WeasyPrintClient())
             {
-                //client.TestWeasy();
-
                 var result = client.GeneratePdf(html);
-
-                var path = Directory.GetCurrentDirectory();
-
-
+                
                 File.WriteAllBytes($"{Directory.GetCurrentDirectory()}\\output.pdf", result);
+            }
+        }
+
+        [Fact]
+        public void GeneratePdfOutputTest()
+        {
+            var html = File.ReadAllText("index.html");
+
+            var input = @"D:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\index.html";
+            var ouput = @"C:\Users\balba\Desktop\outputs\test.pdf";
+
+            using (WeasyPrintClient client = new WeasyPrintClient())
+            {
+                client.GeneratePdf(input, ouput);
             }
         }
     }

@@ -19,13 +19,7 @@ namespace Balbarak.WeasyPrint
         {
 
         }
-
-        public void TestWeasy()
-        {
-            ExcuteCommand("python.exe weasyprint.exe ../index.html ../test.pdf");
-
-        }
-
+        
         public byte[] GeneratePdf(string htmlText)
         {
             byte[] result = null;
@@ -60,6 +54,19 @@ namespace Balbarak.WeasyPrint
             }
 
             return result;
+        }
+
+        public void GeneratePdf(string inputPathFile,string outputPathFile)
+        {
+            try
+            {
+                ExcuteCommand($"python.exe weasyprint.exe {inputPathFile} {outputPathFile} -e utf8");
+            }
+            catch (Exception ex)
+            {
+                OnDataError?.Invoke(this, new OutputEventArgs(ex.ToString()));
+            }
+   
         }
 
         private void ExcuteCommand(string cmd)
