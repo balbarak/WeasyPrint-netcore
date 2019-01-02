@@ -19,7 +19,7 @@ namespace Balbarak.WeasyPrint
         
         public void TestWeasy()
         {
-            ExcuteCommand("weasyprint.exe ../index.html ../test.pdf");
+            ExcuteCommand("python.exe weasyprint.exe ../index.html ../test.pdf");
             
         }
         
@@ -38,7 +38,7 @@ namespace Balbarak.WeasyPrint
 
                 File.WriteAllText($"{folderPath}{inputFileName}", htmlText);
 
-                ExcuteCommand($"weasyprint.exe {inputFileName} {outputFileName} -e utf8");
+                ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
                 
                 result = File.ReadAllBytes($"{folderPath}{outputFileName}");
 
