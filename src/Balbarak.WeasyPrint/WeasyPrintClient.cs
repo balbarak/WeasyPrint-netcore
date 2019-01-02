@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Balbarak.WeasyPrint.Resources;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,11 +16,14 @@ namespace Balbarak.WeasyPrint
         public event EventHandler OnDataOutput;
         public event EventHandler OnDataError;
 
+        private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-files");
+
         private Process _nativeProccess;
 
         public WeasyPrintClient()
         {
-
+            if (!CheckFiles())
+                InitFiles();
         }
         
         public byte[] GeneratePdf(string htmlText)
@@ -28,20 +34,19 @@ namespace Balbarak.WeasyPrint
             {
                 var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
                 var dirSeparator = Path.DirectorySeparatorChar;
-                var folderPath = $"lib{dirSeparator}";
-
+                
                 var inputFileName = $"{fileName}.html";
                 var outputFileName = $"{fileName}.pdf";
 
-                File.WriteAllText($"{folderPath}{inputFileName}", htmlText);
+                var inputFullName = Path.Combine(_libDir,inputFileName);
+                var outputFullName = Path.Combine(_libDir,outputFileName);
+
+                File.WriteAllText(Path.Combine(_libDir,inputFileName), htmlText);
 
                 ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
 
-                result = File.ReadAllBytes($"{folderPath}{outputFileName}");
-
-                var inputFullName = $"{folderPath}{inputFileName}";
-                var outputFullName = $"{folderPath}{outputFileName}";
-
+                result = File.ReadAllBytes(outputFullName);
+                
                 if (File.Exists(inputFullName))
                     File.Delete(inputFullName);
 
@@ -84,11 +89,65 @@ namespace Balbarak.WeasyPrint
 
         }
 
+        private bool CheckFiles()
+        {
+            LogOutput("Checking files ...");
+
+            if (!Directory.Exists(_libDir))
+                return false;
+
+            var files = Directory.GetFiles(_libDir);
+
+            if (files.Count() < 22)
+                return false;
+
+            var containPython = files.Where(a => a.Contains("python.exe")).FirstOrDefault() != null;
+
+            if (!containPython)
+                return false;
+
+            return true;
+        }
+
+        private void InitFiles()
+        {
+            LogOutput($"Checking {_libDir} direcoty");
+
+            if (!Directory.Exists(_libDir))
+            {
+                LogOutput("Creating direcotry");
+
+                Directory.CreateDirectory(_libDir);
+            }
+            else
+            {
+                LogOutput("Deleting corrupted files ...");
+
+                Directory.Delete(_libDir,true);
+
+                Directory.CreateDirectory(_libDir);
+            }
+
+            var filesData = FileResx.libCompress;
+
+            var zipFileName = Path.Combine(_libDir, "weasyFile.zip");
+
+            File.WriteAllBytes(zipFileName, filesData);
+
+            LogOutput("Extracting files ...");
+
+            ZipFile.ExtractToDirectory(zipFileName, _libDir);
+
+            LogOutput($"Deleting {zipFileName}");
+
+            File.Delete(zipFileName);
+        }
+
         private void InitProccess()
         {
             KillProc();
 
-            var workingDir = $"{Directory.GetCurrentDirectory()}\\lib";
+            var workingDir = _libDir;
 
             _nativeProccess = new Process();
 
@@ -118,16 +177,26 @@ namespace Balbarak.WeasyPrint
 
         private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            OnDataError?.Invoke(this, new OutputEventArgs(e.Data));
+            LogError(e.Data);
 
             Debug.WriteLine($"Error: {e.Data}");
         }
 
         private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            OnDataOutput?.Invoke(this, new OutputEventArgs(e.Data));
+            LogOutput(e.Data);
 
             Debug.WriteLine(e.Data);
+        }
+
+        private void LogOutput(string data)
+        {
+            OnDataOutput?.Invoke(this, new OutputEventArgs(data));
+        }
+
+        private void LogError(string data)
+        {
+            OnDataError?.Invoke(this, new OutputEventArgs(data));
         }
 
         public void Dispose()

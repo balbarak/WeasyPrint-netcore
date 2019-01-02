@@ -24,8 +24,8 @@ namespace Balbarak.WeasyPrint.Test
         {
             var html = File.ReadAllText("index.html");
 
-            var input = @"D:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\index.html";
-            var ouput = @"C:\Users\balba\Desktop\outputs\test.pdf";
+            var input = @"C:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\index.html";
+            var ouput = @"C:\Users\balbarak\Desktop\output\test.pdf";
 
             using (WeasyPrintClient client = new WeasyPrintClient())
             {
