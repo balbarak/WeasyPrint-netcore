@@ -4,7 +4,7 @@ WeasyPrint Wrapper for .Net on Windows to generate pdf from html. It uses [Weasy
 `Balbarak.WeasyPrint` simplifies the using of WeasyPrint on Windows
 # Getting started
 
-## Installtion
+## Installation
 
 From nuget packages
 
