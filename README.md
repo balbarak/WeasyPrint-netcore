@@ -1,13 +1,14 @@
 # Introduction
 WeasyPrint Wrapper for .Net on Windows to generate pdf from html. It use [WeasyPrint](https://github.com/Kozea/WeasyPrint) to generate pdf from html without any extra installtion and setup on windows.
 
+`Balbarak.Weasypont` simplify the using of WeasyPrint on Windows
 # Getting started
 
 ## Installtion
 
 From nuget packages
 
-`PM> Install-Package Balbarak.WeasyPrint -Version 0.7.0`
+`PM> Install-Package Balbarak.WeasyPrint -Version 0.7.1`
 
 ## Usage
 
@@ -51,20 +52,14 @@ using (WeasyPrintClient client = new WeasyPrintClient())
     client.GeneratePdf(input,output;
 }
 
-private void OnDataOutput(object sender, EventArgs e)
+private void OnDataOutput(OutputEventArgs e)
 {
-    if (e is OutputEventArgs args)
-    {
-        Console.WriteLine(args.Data);
-    }
+    Console.WriteLine(args.Data);
 }
 
-private void OnDataError(object sender, EventArgs e)
+private void OnDataError(OutputEventArgs e)
 {
-    if (e is OutputEventArgs args)
-    {
-        Console.WriteLine(args.Data);
-    }
+    Console.WriteLine(e.Data);
 }
 ```
 

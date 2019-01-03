@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Balbarak.WeasyPrint</RootNamespace>
     <AssemblyName>Balbarak.WeasyPrint</AssemblyName>
-    <Version>0.7.0</Version>
+    <Version>0.7.1</Version>
     <Description>WeasyPrint Wrapper for .net on Windows</Description>
     <Copyright>balbarak 2018</Copyright>
     <RepositoryUrl>https://github.com/balbarak/WeasyPrint-netcore</RepositoryUrl>
@@ -14,6 +14,7 @@
     <Company>CreaDev</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/balbarak/WeasyPrint-netcore</PackageProjectUrl>
   </PropertyGroup>
 
   <!--<ItemGroup>
