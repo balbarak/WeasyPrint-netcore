@@ -35,7 +35,7 @@ using (WeasyPrintClient client = new WeasyPrintClient())
     var input = @"path\to\input.html";
     var output = @"path\to\output.pdf";
 
-    client.GeneratePdf(input,output;
+    client.GeneratePdf(input,output);
 }
 ```
 
@@ -49,7 +49,7 @@ using (WeasyPrintClient client = new WeasyPrintClient())
     client.OnDataError += OnDataError;
     client.OnDataOutput += OnDataOutput;
 
-    client.GeneratePdf(input,output;
+    client.GeneratePdf(input,output);
 }
 
 private void OnDataOutput(OutputEventArgs e)
