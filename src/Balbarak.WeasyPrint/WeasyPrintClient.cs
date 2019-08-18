@@ -18,7 +18,7 @@ namespace Balbarak.WeasyPrint
         public event WeasyPrintEventHandler OnDataOutput;
         public event WeasyPrintEventHandler OnDataError;
 
-        private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-files");
+        private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-v48");
 
         private Process _nativeProccess;
 
