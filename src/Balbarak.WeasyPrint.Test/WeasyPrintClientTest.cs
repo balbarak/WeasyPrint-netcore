@@ -32,5 +32,31 @@ namespace Balbarak.WeasyPrint.Test
                 client.GeneratePdf(input, ouput);
             }
         }
+
+        [Fact]
+        public void GeneratePdfFromUrl()
+        {
+            var url = "http://www.google.com";
+
+            using (WeasyPrintClient client = new WeasyPrintClient())
+            {
+                var result = client.GeneratePdfFromUrl(url);
+
+                File.WriteAllBytes($"{Directory.GetCurrentDirectory()}\\output.pdf", result);
+            }
+        }
+
+        [Fact]
+        public void GeneratePdfFromUrlOutput()
+        {
+            var url = "http://www.google.com";
+
+            var output = @"C:\Users\balba\Desktop\output\test.pdf";
+
+            using (WeasyPrintClient client = new WeasyPrintClient())
+            {
+                client.GeneratePdfFromUrl(url, output);
+            }
+        }
     }
 }

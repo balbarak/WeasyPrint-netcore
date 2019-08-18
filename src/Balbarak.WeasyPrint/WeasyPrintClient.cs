@@ -25,7 +25,7 @@ namespace Balbarak.WeasyPrint
         public WeasyPrintClient()
         {
         }
-        
+
         public byte[] GeneratePdf(string htmlText)
         {
             if (!CheckFiles())
@@ -39,19 +39,19 @@ namespace Balbarak.WeasyPrint
 
                 var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
                 var dirSeparator = Path.DirectorySeparatorChar;
-                
+
                 var inputFileName = $"{fileName}.html";
                 var outputFileName = $"{fileName}.pdf";
 
-                var inputFullName = Path.Combine(_libDir,inputFileName);
-                var outputFullName = Path.Combine(_libDir,outputFileName);
+                var inputFullName = Path.Combine(_libDir, inputFileName);
+                var outputFullName = Path.Combine(_libDir, outputFileName);
 
-                File.WriteAllText(Path.Combine(_libDir,inputFileName), htmlText);
+                File.WriteAllText(Path.Combine(_libDir, inputFileName), htmlText);
 
                 ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
 
                 result = File.ReadAllBytes(outputFullName);
-                
+
                 if (File.Exists(inputFullName))
                     File.Delete(inputFullName);
 
@@ -69,7 +69,7 @@ namespace Balbarak.WeasyPrint
             return result;
         }
 
-        public void GeneratePdf(string inputPathFile,string outputPathFile)
+        public void GeneratePdf(string inputPathFile, string outputPathFile)
         {
             if (!CheckFiles())
                 InitFiles();
@@ -90,7 +90,64 @@ namespace Balbarak.WeasyPrint
             {
                 OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
             }
-   
+
+        }
+
+        public byte[] GeneratePdfFromUrl(string url)
+        {
+            if (!CheckFiles())
+                InitFiles();
+
+            byte[] result = null;
+
+            try
+            {
+                LogOutput($"Generating pdf from url {url} ...");
+
+                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
+                var dirSeparator = Path.DirectorySeparatorChar;
+
+                var outputFileName = $"{fileName}.pdf";
+
+                var outputFullName = Path.Combine(_libDir, outputFileName);
+
+                ExcuteCommand($"python.exe weasyprint.exe {url} {outputFileName} ");
+
+                result = File.ReadAllBytes(outputFullName);
+
+                if (File.Exists(outputFullName))
+                    File.Delete(outputFullName);
+
+                LogOutput("Pdf generated successfully");
+
+            }
+            catch (Exception ex)
+            {
+                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+            }
+
+            return result;
+        }
+
+        public void GeneratePdfFromUrl(string url,string outputFilePath)
+        {
+            if (!CheckFiles())
+                InitFiles();
+
+            try
+            {
+                LogOutput($"Generating pdf from url {url} ...");
+
+                ExcuteCommand($"python.exe weasyprint.exe {url} {outputFilePath} ");
+                
+                LogOutput("Pdf generated successfully");
+
+            }
+            catch (Exception ex)
+            {
+                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+            }
+
         }
 
         private void ExcuteCommand(string cmd)
@@ -142,7 +199,7 @@ namespace Balbarak.WeasyPrint
             {
                 LogOutput("Deleting corrupted files ...");
 
-                Directory.Delete(_libDir,true);
+                Directory.Delete(_libDir, true);
 
                 Directory.CreateDirectory(_libDir);
             }
