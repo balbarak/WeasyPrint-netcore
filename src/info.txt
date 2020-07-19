@@ -1,2 +1,6 @@
+//To install python via nuget 
+nuget.exe install python
+
+//cmd Environment variables !
 SET PROPER_GTK_FOLDER=<path-to-recently-installed-gtk>
 SET PATH=%PROPER_GTK_FOLDER%;%PATH%

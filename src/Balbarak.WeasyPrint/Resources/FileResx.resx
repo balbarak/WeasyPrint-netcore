@@ -121,4 +121,7 @@
   <data name="libCompress" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>libCompress.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="win64_v51" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>win64-v51.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
