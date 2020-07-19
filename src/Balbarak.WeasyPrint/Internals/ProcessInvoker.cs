@@ -121,7 +121,7 @@ namespace Balbarak.WeasyPrint.Internals
 
             using (var registration = cancellationToken.Register(async () => await CancelAndKillProcessTree(killProcessOnCancel)))
             {
-                _trace?.Info($"Process started with process id {_proc.Id}, waiting for process exit.");
+                _trace?.Verbose($"Process started with process id {_proc.Id}, waiting for process exit.");
 
                 while (true)
                 {
@@ -142,7 +142,7 @@ namespace Balbarak.WeasyPrint.Internals
 
                 ProcessOutput();
 
-                _trace?.Info($"Finished process {_proc.Id} with exit code {_proc.ExitCode}, and elapsed time {_stopWatch.Elapsed}.");
+                _trace?.Info($"\nFinished process {_proc.Id} with exit code {_proc.ExitCode}, and elapsed time {_stopWatch.Elapsed}.");
             }
 
             return _proc.ExitCode;
@@ -223,7 +223,8 @@ namespace Balbarak.WeasyPrint.Internals
             _trace?.Info($"  Arguments: '{args}'");
             _trace?.Info($"  Working directory: '{workingDir}'");
             _trace?.Info($"  Encoding web name: {_outputEncoding?.WebName} ; code page: '{_outputEncoding?.CodePage}'");
-            _trace?.Info($"  Force kill process on cancellation: '{killProccessOnCancel}'");
+            _trace?.Info($"  Force kill process on cancellation: '{killProccessOnCancel}' \n");
+            
 
             _proc = new Process();
             _proc.StartInfo.WorkingDirectory = workingDir;
@@ -265,7 +266,7 @@ namespace Balbarak.WeasyPrint.Internals
                     }
                 }
 
-                _trace?.Info("STDOUT/STDERR stream read finished.");
+                _trace?.Verbose("STDOUT/STDERR stream read finished.");
 
                 if (Interlocked.Decrement(ref _streamReadCount) == 0 && _waitingOnStreams)
                 {
@@ -365,7 +366,7 @@ namespace Balbarak.WeasyPrint.Internals
         private void OnProcessExited(object sender, EventArgs e)
         {
 
-            _trace?.Info($"Exited process {_proc.Id} with exit code {_proc.ExitCode}");
+            _trace?.Verbose($"Exited process {_proc.Id} with exit code {_proc.ExitCode}");
 
             if (_streamReadCount != 0)
             {

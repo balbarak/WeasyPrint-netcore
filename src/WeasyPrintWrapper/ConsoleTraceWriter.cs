@@ -11,5 +11,10 @@ namespace WeasyPrintWrapper
         {
             Console.WriteLine(message);
         }
+
+        public void Verbose(string message)
+        {
+            
+        }
     }
 }

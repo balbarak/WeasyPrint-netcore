@@ -11,5 +11,10 @@ namespace Balbarak.WeasyPrint.Test.Helpers
         {
             Debug.WriteLine(message);
         }
+
+        public void Verbose(string message)
+        {
+            
+        }
     }
 }
