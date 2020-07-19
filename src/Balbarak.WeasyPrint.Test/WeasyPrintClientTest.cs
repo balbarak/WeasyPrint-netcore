@@ -1,4 +1,4 @@
-using Balbarak.WeasyPrint.Test.Helpers;
+﻿using Balbarak.WeasyPrint.Test.Helpers;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,7 +16,9 @@ namespace Balbarak.WeasyPrint.Test
 
             using (WeasyPrintClient client = new WeasyPrintClient(trace))
             {
-                await client.GeneratePdfAsync("<h1>Hello World </h1>");
+                var data = await client.GeneratePdfAsync("<h1>Hello World </h1>");
+
+                Assert.NotNull(data);
             }
         }
     }

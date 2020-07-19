@@ -22,28 +22,31 @@ namespace Balbarak.WeasyPrint
             FolderPath = GetFolderPath();
         }
 
-        public void InitFiles()
+        public Task InitFiles()
         {
-            if (!Directory.Exists(FolderPath))
+            return Task.Run(() =>
             {
-                Directory.CreateDirectory(FolderPath);
-            }
-            else
-            {
-                DeleteFiles();
-                Directory.CreateDirectory(FolderPath);
-            }
+                if (!Directory.Exists(FolderPath))
+                {
+                    Directory.CreateDirectory(FolderPath);
+                }
+                else
+                {
+                    DeleteFiles();
+                    Directory.CreateDirectory(FolderPath);
+                }
 
-            var folderData = FileResx.win64_v51;
+                var folderData = FileResx.win64_v51;
 
-            var compressedFileName = Path.Combine(FolderPath, "data.zip");
+                var compressedFileName = Path.Combine(FolderPath, "data.zip");
 
-            File.WriteAllBytes(compressedFileName, folderData);
+                File.WriteAllBytes(compressedFileName, folderData);
 
-            ZipFile.ExtractToDirectory(compressedFileName, FolderPath);
+                ZipFile.ExtractToDirectory(compressedFileName, FolderPath);
 
-            File.Delete(compressedFileName);
+                File.Delete(compressedFileName);
 
+            });
         }
 
         public bool IsFilesExsited()
@@ -95,8 +98,10 @@ namespace Balbarak.WeasyPrint
         {
             return Task.Run(() =>
             {
-                if (File.Exists(fileName))
-                    return File.ReadAllBytes(fileName);
+                var path = Path.Combine(FolderPath, fileName);
+
+                if (File.Exists(path))
+                    return File.ReadAllBytes(path);
 
                 return null;
             });

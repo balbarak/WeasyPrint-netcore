@@ -29,15 +29,15 @@ namespace Balbarak.WeasyPrint
         public WeasyPrintClient()
         {
             _fileManager = new FilesManager();
-            
+
             SetEnviromentVariables();
-            
+
             _invoker = new ProcessInvoker(_environmentVariables);
         }
 
         public WeasyPrintClient(ITraceWriter traceWriter) : this()
         {
-            _invoker = new ProcessInvoker(_environmentVariables,traceWriter);
+            _invoker = new ProcessInvoker(_environmentVariables, traceWriter);
 
             _trace = traceWriter;
         }
@@ -87,44 +87,73 @@ namespace Balbarak.WeasyPrint
 
         public async Task<byte[]> GeneratePdfAsync(string htmlText)
         {
-            if (!_fileManager.IsFilesExsited())
-                _fileManager.InitFiles();
-
             byte[] result = null;
 
             try
             {
+                if (!_fileManager.IsFilesExsited())
+                    await _fileManager.InitFiles();
+
                 var data = Encoding.UTF8.GetBytes(htmlText);
                 var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
 
                 var inputFileName = $"{fileName}.html";
                 var outputFileName = $"{fileName}.pdf";
 
-                var filePath = await _fileManager.CreateFile(inputFileName, data);
+                var fullFilePath = await _fileManager.CreateFile(inputFileName, data)
+                    .ConfigureAwait(false);
 
-                await _invoker.ExcuteAsync(
-                    _fileManager.FolderPath,
-                    "cmd.exe", 
-                    $"/c weasyprint.exe {filePath} {outputFileName}");
+                var cmd = $"/c weasyprint.exe {fullFilePath} {outputFileName} -e utf8";
 
-                await _fileManager.Delete(filePath);
+                var workingDir = _fileManager.FolderPath;
 
-                result = await _fileManager.ReadFile(outputFileName);
+                await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+                    .ConfigureAwait(false);
 
-                await _fileManager.Delete(outputFileName);
+                await _fileManager.Delete(fullFilePath)
+                    .ConfigureAwait(false);
+
+                result = await _fileManager.ReadFile(outputFileName)
+                    .ConfigureAwait(false);
+
+                await _fileManager.Delete(outputFileName)
+                    .ConfigureAwait(false);
 
                 return result;
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
-                _trace?.Info(ex.ToString());
+                LogError(ex.ToString());
             }
 
             return result;
         }
 
         public void GeneratePdf(string inputPathFile, string outputPathFile)
+        {
+            if (!CheckFiles())
+                InitFiles();
+
+            if (!File.Exists(inputPathFile))
+                throw new FileNotFoundException(inputPathFile);
+
+            try
+            {
+                LogOutput($"Generating pdf from html file {inputPathFile} to {outputPathFile}");
+
+                ExcuteCommand($"python.exe weasyprint.exe {inputPathFile} {outputPathFile} -e utf8");
+
+                LogOutput("Pdf generated successfully");
+
+            }
+            catch (Exception ex)
+            {
+                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+            }
+
+        }
+
+        public async Task GeneratePdfAsync(string inputPathFile, string outputPathFile)
         {
             if (!CheckFiles())
                 InitFiles();
@@ -184,7 +213,7 @@ namespace Balbarak.WeasyPrint
             return result;
         }
 
-        public void GeneratePdfFromUrl(string url,string outputFilePath)
+        public void GeneratePdfFromUrl(string url, string outputFilePath)
         {
             if (!CheckFiles())
                 InitFiles();
@@ -194,7 +223,7 @@ namespace Balbarak.WeasyPrint
                 LogOutput($"Generating pdf from url {url} ...");
 
                 ExcuteCommand($"python.exe weasyprint.exe {url} {outputFilePath} ");
-                
+
                 LogOutput("Pdf generated successfully");
 
             }
@@ -322,17 +351,22 @@ namespace Balbarak.WeasyPrint
 
         private void LogOutput(string data)
         {
-            if (!string.IsNullOrWhiteSpace(data))
-            {
-                var args = new OutputEventArgs(data);
+            if (string.IsNullOrWhiteSpace(data))
+                return;
 
-                OnDataOutput?.Invoke(args);
-            }
+            OnDataOutput?.Invoke(new OutputEventArgs(data));
+
+            _trace?.Info(data);
         }
 
         private void LogError(string data)
         {
+            if (string.IsNullOrWhiteSpace(data))
+                return;
+
             OnDataError?.Invoke(new OutputEventArgs(data));
+
+            _trace?.Info($"Error: {data}");
         }
 
         public void Dispose()
@@ -359,9 +393,10 @@ namespace Balbarak.WeasyPrint
 
         private void SetEnviromentVariables()
         {
-            var variables = new Dictionary<string, string>() 
+            var variables = new Dictionary<string, string>()
             {
-                ["PATH"] = "Scripts;gtk3;%PATH%" 
+                ["PATH"] = "Scripts;gtk3;%PATH%",
+                ["FONTCONFIG_FILE"] = $@"{_fileManager.FolderPath}\etc\fonts\fonts.conf"
             };
 
             _environmentVariables = variables;
