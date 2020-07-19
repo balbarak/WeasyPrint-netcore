@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -34,6 +35,7 @@ namespace Balbarak.WeasyPrint.Internals
         private int _streamReadCount = 0;
         private StreamWriter _inputWriter;
 
+        public Dictionary<string, string> EnvironmentVariables { get; private set; } = new Dictionary<string, string>();
 
         public event EventHandler<string> OnOuput;
         public event EventHandler<string> OnError;
@@ -41,6 +43,16 @@ namespace Balbarak.WeasyPrint.Internals
         public ProcessInvoker()
         {
 
+        }
+
+        public ProcessInvoker(Dictionary<string, string> variables)
+        {
+            EnvironmentVariables = variables;
+        }
+        public ProcessInvoker(Dictionary<string, string> variables,ITraceWriter trace)
+        {
+            EnvironmentVariables = variables;
+            _trace = trace;
         }
 
         public ProcessInvoker(string workingDir, string fileName, string args)
@@ -55,8 +67,9 @@ namespace Balbarak.WeasyPrint.Internals
             _isInterActive = isInteractive;
         }
 
-        public ProcessInvoker(string workingDir, string fileName, string args, ITraceWriter writer) : this(workingDir, fileName, args)
+        public ProcessInvoker(string workingDir, string fileName, string args, ITraceWriter writer, Dictionary<string, string> variables) : this(workingDir, fileName, args)
         {
+            EnvironmentVariables = variables;
             _trace = writer;
         }
         public ProcessInvoker(string workingDir, string fileName, string args, bool isInteractive, ITraceWriter writer) : this(workingDir, fileName, args, isInteractive)
@@ -220,6 +233,11 @@ namespace Balbarak.WeasyPrint.Internals
             _proc.StartInfo.RedirectStandardOutput = true;
             _proc.StartInfo.RedirectStandardError = true;
             _proc.StartInfo.RedirectStandardInput = true;
+
+            foreach (var item in EnvironmentVariables)
+            {
+                _proc.StartInfo.EnvironmentVariables[item.Key] = item.Value;
+            }
 
             if (_outputEncoding != null)
             {

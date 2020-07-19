@@ -1,4 +1,5 @@
-﻿using Balbarak.WeasyPrint.Resources;
+﻿using Balbarak.WeasyPrint.Internals;
+using Balbarak.WeasyPrint.Resources;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +18,9 @@ namespace Balbarak.WeasyPrint
         private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-v48");
         private Process _nativeProccess;
         private readonly FilesManager _fileManager;
+        private readonly ProcessInvoker _invoker;
+        private readonly ITraceWriter _trace;
+        private Dictionary<string, string> _environmentVariables;
 
         public delegate void WeasyPrintEventHandler(OutputEventArgs e);
         public event WeasyPrintEventHandler OnDataOutput;
@@ -24,6 +29,17 @@ namespace Balbarak.WeasyPrint
         public WeasyPrintClient()
         {
             _fileManager = new FilesManager();
+            
+            SetEnviromentVariables();
+            
+            _invoker = new ProcessInvoker(_environmentVariables);
+        }
+
+        public WeasyPrintClient(ITraceWriter traceWriter) : this()
+        {
+            _invoker = new ProcessInvoker(_environmentVariables,traceWriter);
+
+            _trace = traceWriter;
         }
 
         public byte[] GeneratePdf(string htmlText)
@@ -78,35 +94,17 @@ namespace Balbarak.WeasyPrint
 
             try
             {
-                LogOutput("Generating pdf from html text ...");
+                var data = Encoding.UTF8.GetBytes(htmlText);
+                var fileName = $"{Guid.NewGuid().ToString().ToLower()}.html";
 
-                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
-                var dirSeparator = Path.DirectorySeparatorChar;
+                var filePath = await _fileManager.CreateFile(fileName, data);
 
-                var inputFileName = $"{fileName}.html";
-                var outputFileName = $"{fileName}.pdf";
-
-                var inputFullName = Path.Combine(_libDir, inputFileName);
-                var outputFullName = Path.Combine(_libDir, outputFileName);
-
-                File.WriteAllText(Path.Combine(_libDir, inputFileName), htmlText);
-
-                ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
-
-                result = File.ReadAllBytes(outputFullName);
-
-                if (File.Exists(inputFullName))
-                    File.Delete(inputFullName);
-
-                if (File.Exists(outputFullName))
-                    File.Delete(outputFullName);
-
-                LogOutput("Pdf generated successfully");
-
+                await _invoker.ExcuteAsync(_fileManager.FolderPath,"cmd.exe", "/c weasyprint.exe --version");
             }
             catch (Exception ex)
             {
                 OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+                _trace?.Info(ex.ToString());
             }
 
             return result;
@@ -343,6 +341,17 @@ namespace Balbarak.WeasyPrint
 
                 _nativeProccess.Dispose();
             }
+        }
+
+        private void SetEnviromentVariables()
+        {
+            var variables = new Dictionary<string, string>() 
+            {
+                ["PATH"] = "Scripts;gtk3;%PATH%" 
+            };
+
+            _environmentVariables = variables;
+
         }
     }
 }

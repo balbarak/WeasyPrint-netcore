@@ -68,6 +68,18 @@ namespace Balbarak.WeasyPrint
             return true;
         }
 
+        public Task<string> CreateFile(string fileName,byte[] data)
+        {
+            return Task.Run(() =>
+            {
+                var path = Path.Combine(FolderPath, fileName);
+
+                File.WriteAllBytes(path, data);
+
+                return path;
+            });
+        }
+
         private string GetFolderPath()
         {
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
