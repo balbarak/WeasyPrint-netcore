@@ -330,6 +330,7 @@ namespace Balbarak.WeasyPrint.Internals
                 foreach (var item in errorData)
                 {
                     OnError?.Invoke(this, item);
+                    _trace?.Info(item);
                 }
             }
 
@@ -338,6 +339,7 @@ namespace Balbarak.WeasyPrint.Internals
                 foreach (var item in outputData)
                 {
                     OnOuput?.Invoke(this, item);
+                    _trace?.Info(item);
                 }
             }
         }
