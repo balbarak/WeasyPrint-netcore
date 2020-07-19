@@ -396,7 +396,6 @@ namespace Balbarak.WeasyPrint
             var variables = new Dictionary<string, string>()
             {
                 ["PATH"] = "Scripts;gtk3;%PATH%",
-                ["FONTCONFIG_FILE"] = $@"{_fileManager.FolderPath}\gtk3\etc\fonts"
             };
 
             _environmentVariables = variables;
