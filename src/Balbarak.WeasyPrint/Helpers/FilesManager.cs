@@ -68,7 +68,7 @@ namespace Balbarak.WeasyPrint
             return true;
         }
 
-        public Task<string> CreateFile(string fileName,byte[] data)
+        public Task<string> CreateFile(string fileName, byte[] data)
         {
             return Task.Run(() =>
             {
@@ -77,6 +77,28 @@ namespace Balbarak.WeasyPrint
                 File.WriteAllBytes(path, data);
 
                 return path;
+            });
+        }
+
+        public Task Delete(string fileName)
+        {
+            return Task.Run(() =>
+            {
+                var path = Path.Combine(FolderPath, fileName);
+
+                if (File.Exists(path))
+                    File.Delete(path);
+            });
+        }
+
+        public Task<byte[]> ReadFile(string fileName)
+        {
+            return Task.Run(() =>
+            {
+                if (File.Exists(fileName))
+                    return File.ReadAllBytes(fileName);
+
+                return null;
             });
         }
 

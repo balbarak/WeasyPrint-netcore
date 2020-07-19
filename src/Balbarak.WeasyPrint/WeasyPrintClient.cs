@@ -95,11 +95,25 @@ namespace Balbarak.WeasyPrint
             try
             {
                 var data = Encoding.UTF8.GetBytes(htmlText);
-                var fileName = $"{Guid.NewGuid().ToString().ToLower()}.html";
+                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
 
-                var filePath = await _fileManager.CreateFile(fileName, data);
+                var inputFileName = $"{fileName}.html";
+                var outputFileName = $"{fileName}.pdf";
 
-                await _invoker.ExcuteAsync(_fileManager.FolderPath,"cmd.exe", "/c weasyprint.exe --version");
+                var filePath = await _fileManager.CreateFile(inputFileName, data);
+
+                await _invoker.ExcuteAsync(
+                    _fileManager.FolderPath,
+                    "cmd.exe", 
+                    $"/c weasyprint.exe {filePath} {outputFileName}");
+
+                await _fileManager.Delete(filePath);
+
+                result = await _fileManager.ReadFile(outputFileName);
+
+                await _fileManager.Delete(outputFileName);
+
+                return result;
             }
             catch (Exception ex)
             {
