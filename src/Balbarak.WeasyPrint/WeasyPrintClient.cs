@@ -13,23 +13,66 @@ namespace Balbarak.WeasyPrint
 {
     public class WeasyPrintClient : IDisposable
     {
-        public delegate void WeasyPrintEventHandler(OutputEventArgs e);
+        private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-v48");
+        private Process _nativeProccess;
+        private readonly FilesManager _fileManager;
 
+        public delegate void WeasyPrintEventHandler(OutputEventArgs e);
         public event WeasyPrintEventHandler OnDataOutput;
         public event WeasyPrintEventHandler OnDataError;
 
-        private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-v48");
-
-        private Process _nativeProccess;
-
         public WeasyPrintClient()
         {
+            _fileManager = new FilesManager();
         }
 
         public byte[] GeneratePdf(string htmlText)
         {
             if (!CheckFiles())
                 InitFiles();
+
+            byte[] result = null;
+
+            try
+            {
+                LogOutput("Generating pdf from html text ...");
+
+                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
+                var dirSeparator = Path.DirectorySeparatorChar;
+
+                var inputFileName = $"{fileName}.html";
+                var outputFileName = $"{fileName}.pdf";
+
+                var inputFullName = Path.Combine(_libDir, inputFileName);
+                var outputFullName = Path.Combine(_libDir, outputFileName);
+
+                File.WriteAllText(Path.Combine(_libDir, inputFileName), htmlText);
+
+                ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
+
+                result = File.ReadAllBytes(outputFullName);
+
+                if (File.Exists(inputFullName))
+                    File.Delete(inputFullName);
+
+                if (File.Exists(outputFullName))
+                    File.Delete(outputFullName);
+
+                LogOutput("Pdf generated successfully");
+
+            }
+            catch (Exception ex)
+            {
+                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+            }
+
+            return result;
+        }
+
+        public async Task<byte[]> GeneratePdfAsync(string htmlText)
+        {
+            if (!_fileManager.IsFilesExsited())
+                _fileManager.InitFiles();
 
             byte[] result = null;
 
