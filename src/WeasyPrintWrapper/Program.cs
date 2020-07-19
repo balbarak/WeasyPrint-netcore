@@ -17,7 +17,7 @@ namespace WeasyPrintWrapper
 
                 var data = await client.GeneratePdfAsync(html);
 
-                File.WriteAllBytes("test.pdf", data);
+                //File.WriteAllBytes("test.pdf", data);
             }
 
             Console.ReadLine();
