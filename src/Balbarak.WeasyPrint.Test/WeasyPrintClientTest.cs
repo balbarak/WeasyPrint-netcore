@@ -51,5 +51,42 @@ namespace Balbarak.WeasyPrint.Test
 
             }
         }
+
+        [Fact]
+        public async Task Should_Create_Pdf_From_Input_File_Async()
+        {
+            var trace = new DebugTraceWriter();
+
+            var input = $"{_inputFolder}\\complex.html";
+            var output = $"{_outputFolder}\\output.pdf";
+
+            using (WeasyPrintClient client = new WeasyPrintClient(trace))
+            {
+                await client.GeneratePdfAsync(input, output);
+
+            }
+        }
+
+        [Fact]
+        public async Task Should_Create_Pdf_From_Url_Async()
+        {
+            var trace = new DebugTraceWriter();
+
+            var url = "https://www.google.com";
+
+            using (WeasyPrintClient client = new WeasyPrintClient(trace))
+            {
+               var result =  await client.GeneratePdfFromUrlAsync(url);
+
+                File.WriteAllBytes($"{_outputFolder}\\url.pdf", result);
+
+            }
+        }
+
+        [Fact]
+        public void Should_Create_Pdf_From_Url_Output_File()
+        {
+           
+        }
     }
 }

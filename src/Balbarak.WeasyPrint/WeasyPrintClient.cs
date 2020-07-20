@@ -15,8 +15,6 @@ namespace Balbarak.WeasyPrint
 {
     public class WeasyPrintClient : IDisposable
     {
-        private readonly string _libDir = Path.Combine(Directory.GetCurrentDirectory(), "weasyprint-v48");
-        private Process _nativeProccess;
         private readonly FilesManager _fileManager;
         private readonly ProcessInvoker _invoker;
         private readonly ITraceWriter _trace;
@@ -110,77 +108,40 @@ namespace Balbarak.WeasyPrint
             }
         }
 
-        private async Task GeneratePdfInternal(string inputPathFile, string outputPathFile)
-        {
-            if (!File.Exists(inputPathFile))
-                throw new FileNotFoundException();
-
-            await EnsureFilesExisted()
-                .ConfigureAwait(false);
-
-            var cmd = $"/c python.exe scripts/weasyprint.exe {inputPathFile} {outputPathFile} -e utf8";
-
-            var workingDir = _fileManager.FolderPath;
-
-            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
-                .ConfigureAwait(false);
-        }
-
         public byte[] GeneratePdfFromUrl(string url)
         {
-            if (!CheckFiles())
-                InitFiles();
-
-            byte[] result = null;
+            byte[] result;
 
             try
             {
-                LogOutput($"Generating pdf from url {url} ...");
+                result = GeneratePdfFromUrlInternal(url).GetAwaiter().GetResult();
 
-                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
-                var dirSeparator = Path.DirectorySeparatorChar;
-
-                var outputFileName = $"{fileName}.pdf";
-
-                var outputFullName = Path.Combine(_libDir, outputFileName);
-
-                ExcuteCommand($"python.exe weasyprint.exe {url} {outputFileName} ");
-
-                result = File.ReadAllBytes(outputFullName);
-
-                if (File.Exists(outputFullName))
-                    File.Delete(outputFullName);
-
-                LogOutput("Pdf generated successfully");
+                return result;
 
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+                LogError(ex.ToString());
+                throw new WeasyPrintException(ex.Message, ex);
             }
-
-            return result;
         }
 
-        public void GeneratePdfFromUrl(string url, string outputFilePath)
+        public async Task<byte[]> GeneratePdfFromUrlAsync(string url)
         {
-            if (!CheckFiles())
-                InitFiles();
+            byte[] result;
 
             try
             {
-                LogOutput($"Generating pdf from url {url} ...");
+                result = await GeneratePdfFromUrlInternal(url);
 
-                ExcuteCommand($"python.exe weasyprint.exe {url} {outputFilePath} ");
-
-                LogOutput("Pdf generated successfully");
-
+                return result; 
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
-            }
+                LogError(ex.ToString());
 
+                throw new WeasyPrintException(ex.Message, ex);
+            }
         }
 
         private async Task<byte[]> GeneratePdfInternal(string htmlText)
@@ -218,125 +179,54 @@ namespace Balbarak.WeasyPrint
             return result;
         }
 
+        private async Task GeneratePdfInternal(string inputPathFile, string outputPathFile)
+        {
+            if (!File.Exists(inputPathFile))
+                throw new FileNotFoundException();
+
+            await EnsureFilesExisted()
+                .ConfigureAwait(false);
+
+            var cmd = $"/c python.exe scripts/weasyprint.exe {inputPathFile} {outputPathFile} -e utf8";
+
+            var workingDir = _fileManager.FolderPath;
+
+            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+                .ConfigureAwait(false);
+        }
+
+        private async Task<byte[]> GeneratePdfFromUrlInternal(string url)
+        {
+            byte[] result;
+
+            await EnsureFilesExisted()
+                .ConfigureAwait(false);
+
+            var fileName = $"{Guid.NewGuid().ToString().ToLower()}.pdf";
+
+            var outputFileName = Path.Combine(_fileManager.FolderPath, $"{fileName}");
+
+            var cmd = $"/c python.exe scripts/weasyprint.exe {url} {outputFileName} -e utf8";
+
+            var workingDir = _fileManager.FolderPath;
+
+            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+                .ConfigureAwait(false);
+
+
+            result = await _fileManager.ReadFile(fileName)
+                .ConfigureAwait(false);
+
+            await _fileManager.Delete(fileName)
+                .ConfigureAwait(false);
+
+            return result;
+        }
+
         private async Task EnsureFilesExisted()
         {
             if (!_fileManager.IsFilesExsited())
                 await _fileManager.InitFilesAsync();
-        }
-
-        private void ExcuteCommand(string cmd)
-        {
-            InitProccess();
-
-            _nativeProccess.StartInfo.Arguments = $@"/c {cmd}";
-
-            _nativeProccess.Start();
-
-            _nativeProccess.BeginOutputReadLine();
-            _nativeProccess.BeginErrorReadLine();
-
-            _nativeProccess.WaitForExit();
-
-        }
-
-        private bool CheckFiles()
-        {
-            LogOutput("Checking files ...");
-
-            if (!Directory.Exists(_libDir))
-                return false;
-
-            var files = Directory.GetFiles(_libDir);
-
-            if (files.Count() < 22)
-                return false;
-
-            var containPython = files.Where(a => a.Contains("python.exe")).FirstOrDefault() != null;
-
-            if (!containPython)
-                return false;
-
-            return true;
-        }
-
-        private void InitFiles()
-        {
-            LogOutput($"Checking {_libDir} direcoty");
-
-            if (!Directory.Exists(_libDir))
-            {
-                LogOutput("Creating direcotry");
-
-                Directory.CreateDirectory(_libDir);
-            }
-            else
-            {
-                LogOutput("Deleting corrupted files ...");
-
-                Directory.Delete(_libDir, true);
-
-                Directory.CreateDirectory(_libDir);
-            }
-
-            var filesData = FileResx.libCompress;
-
-            var zipFileName = Path.Combine(_libDir, "weasyFile.zip");
-
-            File.WriteAllBytes(zipFileName, filesData);
-
-            LogOutput("Extracting files ...");
-
-            ZipFile.ExtractToDirectory(zipFileName, _libDir);
-
-            LogOutput($"Deleting {zipFileName}");
-
-            File.Delete(zipFileName);
-        }
-
-        private void InitProccess()
-        {
-            KillProc();
-
-            var workingDir = _libDir;
-
-            _nativeProccess = new Process();
-
-            _nativeProccess.StartInfo.FileName = @"cmd.exe";
-
-            _nativeProccess.StartInfo.EnvironmentVariables["PATH"] = "gtk3;%PATH%";
-
-            _nativeProccess.StartInfo.EnvironmentVariables["FONTCONFIG_FILE"] = $"{workingDir}\\gtk3\\fonts.config";
-
-            _nativeProccess.StartInfo.WorkingDirectory = workingDir;
-            _nativeProccess.StartInfo.UseShellExecute = false;
-            _nativeProccess.StartInfo.RedirectStandardInput = true;
-            _nativeProccess.StartInfo.RedirectStandardOutput = true;
-            _nativeProccess.StartInfo.RedirectStandardError = true;
-            _nativeProccess.StartInfo.CreateNoWindow = true;
-
-            _nativeProccess.OutputDataReceived += OnOutputDataReceived;
-            _nativeProccess.ErrorDataReceived += OnErrorDataReceived;
-            _nativeProccess.Exited += OnExited;
-
-        }
-
-        private void OnExited(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Proccess exited");
-        }
-
-        private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            LogError(e.Data);
-
-            Debug.WriteLine($"Error: {e.Data}");
-        }
-
-        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            LogOutput(e.Data);
-
-            Debug.WriteLine(e.Data);
         }
 
         private void LogOutput(string data)
@@ -361,26 +251,7 @@ namespace Balbarak.WeasyPrint
 
         public void Dispose()
         {
-            KillProc();
-
             _invoker.Dispose();
-        }
-
-        private void KillProc()
-        {
-            if (_nativeProccess != null)
-            {
-                try
-                {
-                    _nativeProccess.Kill();
-                }
-                catch
-                {
-
-                }
-
-                _nativeProccess.Dispose();
-            }
         }
 
         private void SetEnviromentVariables()
