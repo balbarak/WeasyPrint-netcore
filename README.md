@@ -1,3 +1,6 @@
+
+![Nuget](https://img.shields.io/nuget/v/Balbarak.WeasyPrint)
+
 # Introduction
 WeasyPrint Wrapper for .Net on Windows to generate pdf from html. It uses [WeasyPrint](https://github.com/Kozea/WeasyPrint) to generate pdf from html without any extra installtion and setup on Windows.
 
@@ -8,7 +11,9 @@ WeasyPrint Wrapper for .Net on Windows to generate pdf from html. It uses [Weasy
 
 From nuget packages
 
-`PM> Install-Package Balbarak.WeasyPrint -Version 0.7.1`
+![Nuget](https://img.shields.io/nuget/v/Balbarak.WeasyPrint)
+
+`PM> Install-Package Balbarak.WeasyPrint`
 
 ## Usage
 
@@ -22,7 +27,7 @@ using (WeasyPrintClient client = new WeasyPrintClient())
 {
     var html = "<!DOCTYPE html><html><body><h1>Hello World</h1></body></html>";
 
-    var binaryPdf = client.GeneratePdf(html);
+    var binaryPdf = await client.GeneratePdfAsync(html);
 
     File.WriteAllBytes("result.pdf",binaryPdf);
 }
@@ -35,7 +40,7 @@ using (WeasyPrintClient client = new WeasyPrintClient())
     var input = @"path\to\input.html";
     var output = @"path\to\output.pdf";
 
-    client.GeneratePdf(input,output);
+    await client.GeneratePdfAsync(input,output);
 }
 ```
 
@@ -49,7 +54,7 @@ using (WeasyPrintClient client = new WeasyPrintClient())
     client.OnDataError += OnDataError;
     client.OnDataOutput += OnDataOutput;
 
-    client.GeneratePdf(input,output);
+    await client.GeneratePdfAsync(input,output);
 }
 
 private void OnDataOutput(OutputEventArgs e)
