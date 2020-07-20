@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Balbarak.WeasyPrint.Test
@@ -9,11 +10,11 @@ namespace Balbarak.WeasyPrint.Test
     public class FilesManagerTest
     {
         [Fact]
-        public void Should_Init_Files()
+        public async Task Should_Init_Files()
         {
             FilesManager manager = new FilesManager();
 
-            manager.InitFiles();
+            await manager.InitFilesAsync();
 
             var files = Directory.GetFiles(manager.FolderPath);
 

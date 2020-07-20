@@ -44,137 +44,86 @@ namespace Balbarak.WeasyPrint
 
         public byte[] GeneratePdf(string htmlText)
         {
-            if (!CheckFiles())
-                InitFiles();
-
-            byte[] result = null;
+            byte[] result;
 
             try
             {
-                LogOutput("Generating pdf from html text ...");
+                result = GeneratePdfInternal(htmlText).GetAwaiter().GetResult();
 
-                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
-                var dirSeparator = Path.DirectorySeparatorChar;
-
-                var inputFileName = $"{fileName}.html";
-                var outputFileName = $"{fileName}.pdf";
-
-                var inputFullName = Path.Combine(_libDir, inputFileName);
-                var outputFullName = Path.Combine(_libDir, outputFileName);
-
-                File.WriteAllText(Path.Combine(_libDir, inputFileName), htmlText);
-
-                ExcuteCommand($"python.exe weasyprint.exe {inputFileName} {outputFileName} -e utf8");
-
-                result = File.ReadAllBytes(outputFullName);
-
-                if (File.Exists(inputFullName))
-                    File.Delete(inputFullName);
-
-                if (File.Exists(outputFullName))
-                    File.Delete(outputFullName);
-
-                LogOutput("Pdf generated successfully");
-
+                return result;
             }
             catch (Exception ex)
             {
                 OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+
+                throw new WeasyPrintException(ex.Message, ex);
             }
 
-            return result;
         }
 
         public async Task<byte[]> GeneratePdfAsync(string htmlText)
         {
-            byte[] result = null;
+            byte[] result;
 
             try
             {
-                if (!_fileManager.IsFilesExsited())
-                    await _fileManager.InitFiles();
-
-                var data = Encoding.UTF8.GetBytes(htmlText);
-                var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
-
-                var inputFileName = $"{fileName}.html";
-                var outputFileName = $"{fileName}.pdf";
-
-                var fullFilePath = await _fileManager.CreateFile(inputFileName, data)
-                    .ConfigureAwait(false);
-
-                var cmd = $"/c python.exe scripts/weasyprint.exe {fullFilePath} {outputFileName} -e utf8";
-
-                var workingDir = _fileManager.FolderPath;
-
-                await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
-                    .ConfigureAwait(false);
-
-                await _fileManager.Delete(fullFilePath)
-                    .ConfigureAwait(false);
-
-                result = await _fileManager.ReadFile(outputFileName)
-                    .ConfigureAwait(false);
-
-                await _fileManager.Delete(outputFileName)
-                    .ConfigureAwait(false);
+                result = await GeneratePdfInternal(htmlText).ConfigureAwait(false);
 
                 return result;
             }
             catch (Exception ex)
             {
                 LogError(ex.ToString());
-            }
 
-            return result;
+                throw new WeasyPrintException(ex.Message, ex);
+            }
         }
 
         public void GeneratePdf(string inputPathFile, string outputPathFile)
         {
-            if (!CheckFiles())
-                InitFiles();
-
-            if (!File.Exists(inputPathFile))
-                throw new FileNotFoundException(inputPathFile);
-
             try
             {
-                LogOutput($"Generating pdf from html file {inputPathFile} to {outputPathFile}");
 
-                ExcuteCommand($"python.exe weasyprint.exe {inputPathFile} {outputPathFile} -e utf8");
-
-                LogOutput("Pdf generated successfully");
+                GeneratePdfInternal(inputPathFile, outputPathFile).GetAwaiter().GetResult();
 
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
+                LogError(ex.ToString());
+                throw new WeasyPrintException(ex.Message, ex);
             }
 
         }
 
         public async Task GeneratePdfAsync(string inputPathFile, string outputPathFile)
         {
-            if (!CheckFiles())
-                InitFiles();
-
-            if (!File.Exists(inputPathFile))
-                throw new FileNotFoundException(inputPathFile);
-
             try
             {
-                LogOutput($"Generating pdf from html file {inputPathFile} to {outputPathFile}");
-
-                ExcuteCommand($"python.exe weasyprint.exe {inputPathFile} {outputPathFile} -e utf8");
-
-                LogOutput("Pdf generated successfully");
+                await GeneratePdfInternal(inputPathFile, outputPathFile).ConfigureAwait(false);
 
             }
             catch (Exception ex)
             {
-                OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
-            }
+                LogError(ex.ToString());
 
+                throw new WeasyPrintException(ex.Message, ex);
+            }
+        }
+
+        private async Task GeneratePdfInternal(string inputPathFile, string outputPathFile)
+        {
+            if (!File.Exists(inputPathFile))
+                throw new FileNotFoundException();
+
+            await EnsureFilesExisted()
+                .ConfigureAwait(false);
+
+            var cmd = $"/c python.exe scripts/weasyprint.exe {inputPathFile} {outputPathFile} -e utf8";
+
+            var workingDir = _fileManager.FolderPath;
+
+            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+                .ConfigureAwait(false);
         }
 
         public byte[] GeneratePdfFromUrl(string url)
@@ -232,6 +181,47 @@ namespace Balbarak.WeasyPrint
                 OnDataError?.Invoke(new OutputEventArgs(ex.ToString()));
             }
 
+        }
+
+        private async Task<byte[]> GeneratePdfInternal(string htmlText)
+        {
+            byte[] result;
+
+            await EnsureFilesExisted()
+                .ConfigureAwait(false);
+
+            var data = Encoding.UTF8.GetBytes(htmlText);
+            var fileName = $"{Guid.NewGuid().ToString().ToLower()}";
+
+            var inputFileName = $"{fileName}.html";
+            var outputFileName = $"{fileName}.pdf";
+
+            var fullFilePath = await _fileManager.CreateFile(inputFileName, data)
+                .ConfigureAwait(false);
+
+            var cmd = $"/c python.exe scripts/weasyprint.exe {fullFilePath} {outputFileName} -e utf8";
+
+            var workingDir = _fileManager.FolderPath;
+
+            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+                .ConfigureAwait(false);
+
+            await _fileManager.Delete(fullFilePath)
+                .ConfigureAwait(false);
+
+            result = await _fileManager.ReadFile(outputFileName)
+                .ConfigureAwait(false);
+
+            await _fileManager.Delete(outputFileName)
+                .ConfigureAwait(false);
+
+            return result;
+        }
+
+        private async Task EnsureFilesExisted()
+        {
+            if (!_fileManager.IsFilesExsited())
+                await _fileManager.InitFilesAsync();
         }
 
         private void ExcuteCommand(string cmd)
@@ -372,6 +362,8 @@ namespace Balbarak.WeasyPrint
         public void Dispose()
         {
             KillProc();
+
+            _invoker.Dispose();
         }
 
         private void KillProc()

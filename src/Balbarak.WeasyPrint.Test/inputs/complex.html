@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Tajawal:400,500&display=swap&subset=arabic" rel="stylesheet">
+    <style>
+
+        body {
+            font-family: 'Tajawal';
+            font-size: 24px;
+        }
+
+
+        .table-footer table thead tr th {
+            padding: 1rem 0 0.5rem 0;
+            border-top: none;
+            color: #a7abc3;
+            font-weight: 500;
+            font-size: 3rem;
+        }
+
+        thead tr th:last-child {
+            text-align: end;
+            font-weight: bold;
+        }
+
+        tbody tr td:last-child {
+            text-align: end;
+            font-size: 1.8rem;
+            padding-top: 1rem;
+        }
+
+        .invoice-table {
+            margin-top: 10%;
+        }
+
+        .invoice-top {
+            margin-top: 10%;
+        }
+
+        .inv-footer {
+            margin-top: 10%;
+        }
+
+        .paid-mark {
+            position: absolute;
+            z-index: 2;
+            opacity: 0.4;
+            width: 500px;
+            height: 500px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            color: yellow;
+        }
+
+            .paid-mark h1 {
+                color: green;
+                font-size: 120px;
+                transform: rotate(300deg);
+                -webkit-transform: rotate(300deg);
+            }
+
+        @media print {
+
+            @page {
+                size: A4 portrait;
+                margin: 0px;
+                margin-top: 2.54cm;
+                margin-right: 1.5cm;
+                margin-left: 1.5cm;
+            }
+
+            .page {
+                page-break-before: always;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="page">
+
+        <h1 style="text-align:center">
+            بسم الله الرحمن الرحيم
+        </h1>
+        
+    </div>
+    <div class="page">
+
+        <h1 style="text-align:center">
+            صفحة رقم 2
+        </h1>
+    </div>
+
+</body>
+</html>

@@ -22,7 +22,7 @@ namespace Balbarak.WeasyPrint
             FolderPath = GetFolderPath();
         }
 
-        public Task InitFiles()
+        public Task InitFilesAsync()
         {
             return Task.Run(() =>
             {
