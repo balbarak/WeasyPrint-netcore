@@ -4,27 +4,24 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Balbarak.WeasyPrint</RootNamespace>
     <AssemblyName>Balbarak.WeasyPrint</AssemblyName>
-    <Version>1.0</Version>
+    <Version>2.0.0</Version>
     <Description>WeasyPrint Wrapper for .net on Windows</Description>
     <Copyright>balbarak 2018</Copyright>
     <RepositoryUrl>https://github.com/balbarak/WeasyPrint-netcore</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
-    <PackageReleaseNotes>- Add support for URLs
-- Upgrade wasyprint to v48</PackageReleaseNotes>
+    <PackageReleaseNotes>- Upgrade to wasyprint to v51
+- Add async methods
+- Upgrade to latest gtk3 library</PackageReleaseNotes>
     <Authors>balbarak</Authors>
     <Company>CreaDev</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/balbarak/WeasyPrint-netcore</PackageProjectUrl>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--<ItemGroup>
-    <Content Include="lib\**\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>-->
 
   <ItemGroup>
     <Compile Update="Resources\FileResx.Designer.cs">

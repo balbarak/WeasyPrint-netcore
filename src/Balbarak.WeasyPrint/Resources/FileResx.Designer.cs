@@ -63,16 +63,6 @@ namespace Balbarak.WeasyPrint.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] libCompress {
-            get {
-                object obj = ResourceManager.GetObject("libCompress", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] win64_v51 {
             get {
                 object obj = ResourceManager.GetObject("win64_v51", resourceCulture);

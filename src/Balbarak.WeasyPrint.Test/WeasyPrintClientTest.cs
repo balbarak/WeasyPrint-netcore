@@ -82,11 +82,5 @@ namespace Balbarak.WeasyPrint.Test
 
             }
         }
-
-        [Fact]
-        public void Should_Create_Pdf_From_Url_Output_File()
-        {
-           
-        }
     }
 }
