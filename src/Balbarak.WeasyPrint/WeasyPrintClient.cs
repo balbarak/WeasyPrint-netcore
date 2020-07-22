@@ -160,7 +160,7 @@ namespace Balbarak.WeasyPrint
             var fullFilePath = await _fileManager.CreateFile(inputFileName, data)
                 .ConfigureAwait(false);
 
-            var cmd = $"/c python.exe scripts/weasyprint.exe {fullFilePath} {outputFileName} -e utf8";
+            var cmd = $"/c python.exe scripts/weasyprint.exe \"{fullFilePath}\" \"{outputFileName}\" -e utf8";
 
             var workingDir = _fileManager.FolderPath;
 
@@ -187,7 +187,7 @@ namespace Balbarak.WeasyPrint
             await EnsureFilesExisted()
                 .ConfigureAwait(false);
 
-            var cmd = $"/c python.exe scripts/weasyprint.exe {inputPathFile} {outputPathFile} -e utf8";
+            var cmd = $"/c python.exe scripts/weasyprint.exe \"{inputPathFile}\" \"{outputPathFile}\" -e utf8";
 
             var workingDir = _fileManager.FolderPath;
 
@@ -206,7 +206,7 @@ namespace Balbarak.WeasyPrint
 
             var outputFileName = Path.Combine(_fileManager.FolderPath, $"{fileName}");
 
-            var cmd = $"/c python.exe scripts/weasyprint.exe {url} {outputFileName} -e utf8";
+            var cmd = $"/c python.exe scripts/weasyprint.exe \"{url}\" \"{outputFileName}\" -e utf8";
 
             var workingDir = _fileManager.FolderPath;
 
