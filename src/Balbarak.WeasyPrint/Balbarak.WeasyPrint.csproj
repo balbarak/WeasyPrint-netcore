@@ -4,21 +4,19 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Balbarak.WeasyPrint</RootNamespace>
     <AssemblyName>Balbarak.WeasyPrint</AssemblyName>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Description>WeasyPrint Wrapper for .net on Windows</Description>
     <Copyright>balbarak 2018</Copyright>
     <RepositoryUrl>https://github.com/balbarak/WeasyPrint-netcore</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
-    <PackageReleaseNotes>- Upgrade to wasyprint to v51
-- Add async methods
-- Upgrade to latest gtk3 library</PackageReleaseNotes>
+    <PackageReleaseNotes>- Fix bug when File name has spaces</PackageReleaseNotes>
     <Authors>balbarak</Authors>
     <Company>CreaDev</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/balbarak/WeasyPrint-netcore</PackageProjectUrl>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <FileVersion>2.0.0.1</FileVersion>
     <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
