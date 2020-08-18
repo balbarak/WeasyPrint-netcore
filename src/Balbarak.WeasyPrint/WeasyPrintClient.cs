@@ -1,19 +1,13 @@
 ﻿using Balbarak.WeasyPrint.Internals;
-using Balbarak.WeasyPrint.Resources;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Balbarak.WeasyPrint
 {
-    public class WeasyPrintClient : IDisposable
+    public class WeasyPrintClient : IWeasyPrintClient
     {
         private readonly FilesManager _fileManager;
         private readonly ProcessInvoker _invoker;
