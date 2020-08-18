@@ -75,9 +75,7 @@ namespace Balbarak.WeasyPrint
         {
             try
             {
-
                 GeneratePdfInternal(inputPathFile, outputPathFile).GetAwaiter().GetResult();
-
             }
             catch (Exception ex)
             {
@@ -92,7 +90,6 @@ namespace Balbarak.WeasyPrint
             try
             {
                 await GeneratePdfInternal(inputPathFile, outputPathFile).ConfigureAwait(false);
-
             }
             catch (Exception ex)
             {
@@ -128,7 +125,7 @@ namespace Balbarak.WeasyPrint
             {
                 result = await GeneratePdfFromUrlInternal(url);
 
-                return result; 
+                return result;
             }
             catch (Exception ex)
             {
