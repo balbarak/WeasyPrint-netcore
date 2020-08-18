@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Balbarak.WeasyPrint
 {
-    public class WeasyPrintClient : IDisposable
+    public class WeasyPrintClient : IWeasyPrintClient
     {
         private readonly FilesManager _fileManager;
         private readonly ProcessInvoker _invoker;
