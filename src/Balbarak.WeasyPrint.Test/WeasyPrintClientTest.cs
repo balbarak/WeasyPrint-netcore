@@ -1,5 +1,4 @@
 ﻿using Balbarak.WeasyPrint.Test.Helpers;
-using System;
 using System.IO;
 using System.Threading.Tasks;
 using Xunit;
@@ -8,8 +7,8 @@ namespace Balbarak.WeasyPrint.Test
 {
     public class WeasyPrintClientTest
     {
-        private readonly string _inputFolder = @"C:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\inputs";
-        private readonly string _outputFolder = @"C:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\outputs";
+        private readonly string _inputFolder = @"/workspaces/WeasyPrint-netcore/src/Balbarak.WeasyPrint.Test/inputs";
+        private readonly string _outputFolder = @"/workspaces/WeasyPrint-netcore/src/Balbarak.WeasyPrint.Test/outputs";
 
         [Fact]
         public async Task Should_Create_Pdf_From_Input_Text_Async()
@@ -42,8 +41,8 @@ namespace Balbarak.WeasyPrint.Test
         {
             var trace = new DebugTraceWriter();
 
-            var input = $"{_inputFolder}\\complex.html";
-            var output = $"{_outputFolder}\\output.pdf";
+            var input = $"{_inputFolder}/complex.html";
+            var output = $"{_outputFolder}/output.pdf";
 
             using (WeasyPrintClient client = new WeasyPrintClient(trace))
             {
@@ -57,13 +56,12 @@ namespace Balbarak.WeasyPrint.Test
         {
             var trace = new DebugTraceWriter();
 
-            var input = $"{_inputFolder}\\complex.html";
-            var output = $"{_outputFolder}\\output.pdf";
+            var input = $"{_inputFolder}/complex.html";
+            var output = $"{_outputFolder}/output.pdf";
 
             using (WeasyPrintClient client = new WeasyPrintClient(trace))
             {
                 await client.GeneratePdfAsync(input, output);
-
             }
         }
 
@@ -78,7 +76,7 @@ namespace Balbarak.WeasyPrint.Test
             {
                var result =  await client.GeneratePdfFromUrlAsync(url);
 
-                File.WriteAllBytes($"{_outputFolder}\\url.pdf", result);
+                File.WriteAllBytes($"{_outputFolder}/url.pdf", result);
 
             }
         }

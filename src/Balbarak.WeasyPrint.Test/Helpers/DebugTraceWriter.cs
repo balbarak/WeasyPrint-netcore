@@ -14,7 +14,7 @@ namespace Balbarak.WeasyPrint.Test.Helpers
 
         public void Verbose(string message)
         {
-            
+            Debug.WriteLine(message);
         }
     }
 }

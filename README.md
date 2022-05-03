@@ -2,7 +2,8 @@
 ![Nuget](https://img.shields.io/nuget/v/Balbarak.WeasyPrint)
 
 # Introduction
-WeasyPrint Wrapper for .Net on Windows to generate pdf from html. It uses [WeasyPrint](https://github.com/Kozea/WeasyPrint) to generate pdf from html without any extra installtion and setup on Windows.
+WeasyPrint Wrapper for .Net on Windows to generate pdf from html. It uses [WeasyPrint](https://github.com/Kozea/WeasyPrint) to generate pdf from html without any extra installation and setup on Windows. 
+For usage in not Windows environment we assume the `weasyprint` command is in the `PATH` and available in the commandline.
 
 `Balbarak.WeasyPrint` simplifies the using of WeasyPrint on Windows
 # Getting started
@@ -14,6 +15,8 @@ From nuget packages
 ![Nuget](https://img.shields.io/nuget/v/Balbarak.WeasyPrint)
 
 `PM> Install-Package Balbarak.WeasyPrint`
+
+
 
 ## Usage
 

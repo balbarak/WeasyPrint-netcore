@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -148,23 +149,20 @@ namespace Balbarak.WeasyPrint
             var inputFileName = $"{fileName}.html";
             var outputFileName = $"{fileName}.pdf";
 
-            var fullFilePath = await _fileManager.CreateFile(inputFileName, data)
+            var fullinputFileName = await _fileManager.CreateFile(inputFileName, data)
+                .ConfigureAwait(false);
+            var fulloutputFileName = Path.Combine(_fileManager.FolderPath, outputFileName);
+
+            await _invoker.ExcuteAsync(_fileManager.FolderPath, GetTerminal(), GetTerminalArguments(fullinputFileName, fulloutputFileName))
                 .ConfigureAwait(false);
 
-            var cmd = $"/c python.exe scripts/weasyprint.exe \"{fullFilePath}\" \"{outputFileName}\" -e utf8";
-
-            var workingDir = _fileManager.FolderPath;
-
-            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+            await _fileManager.Delete(fullinputFileName)
                 .ConfigureAwait(false);
 
-            await _fileManager.Delete(fullFilePath)
+            result = await _fileManager.ReadFile(fulloutputFileName)
                 .ConfigureAwait(false);
 
-            result = await _fileManager.ReadFile(outputFileName)
-                .ConfigureAwait(false);
-
-            await _fileManager.Delete(outputFileName)
+            await _fileManager.Delete(fulloutputFileName)
                 .ConfigureAwait(false);
 
             return result;
@@ -178,11 +176,7 @@ namespace Balbarak.WeasyPrint
             await EnsureFilesExisted()
                 .ConfigureAwait(false);
 
-            var cmd = $"/c python.exe scripts/weasyprint.exe \"{inputPathFile}\" \"{outputPathFile}\" -e utf8";
-
-            var workingDir = _fileManager.FolderPath;
-
-            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+            await _invoker.ExcuteAsync(_fileManager.FolderPath, GetTerminal(), GetTerminalArguments(inputPathFile, outputPathFile))
                 .ConfigureAwait(false);
         }
 
@@ -197,18 +191,13 @@ namespace Balbarak.WeasyPrint
 
             var outputFileName = Path.Combine(_fileManager.FolderPath, $"{fileName}");
 
-            var cmd = $"/c python.exe scripts/weasyprint.exe \"{url}\" \"{outputFileName}\" -e utf8";
-
-            var workingDir = _fileManager.FolderPath;
-
-            await _invoker.ExcuteAsync(workingDir, "cmd.exe", cmd)
+            await _invoker.ExcuteAsync(_fileManager.FolderPath, GetTerminal(), GetTerminalArguments(url, outputFileName))
                 .ConfigureAwait(false);
 
-
-            result = await _fileManager.ReadFile(fileName)
+            result = await _fileManager.ReadFile(outputFileName)
                 .ConfigureAwait(false);
 
-            await _fileManager.Delete(fileName)
+            await _fileManager.Delete(outputFileName)
                 .ConfigureAwait(false);
 
             return result;
@@ -255,5 +244,13 @@ namespace Balbarak.WeasyPrint
             _environmentVariables = variables;
 
         }
+
+        private string GetTerminal()
+            => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "weasyprint";
+
+        private string GetTerminalArguments(string fullFilePath, string outputFileName)
+            => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) 
+                ? $"/c python.exe scripts/weasyprint.exe \"{fullFilePath}\" \"{outputFileName}\" -e utf8"
+                : $"\"{fullFilePath}\" \"{outputFileName}\" -e utf8";
     }
 }

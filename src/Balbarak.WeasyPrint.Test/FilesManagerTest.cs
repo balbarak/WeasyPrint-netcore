@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -18,7 +16,7 @@ namespace Balbarak.WeasyPrint.Test
 
             var files = Directory.GetFiles(manager.FolderPath);
 
-            var hasFiles = files.Length == 7;
+            var hasFiles = files.Length == 7 || !RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
             Assert.True(hasFiles);
         }

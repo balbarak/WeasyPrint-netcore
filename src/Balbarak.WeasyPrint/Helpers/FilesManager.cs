@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,16 +37,19 @@ namespace Balbarak.WeasyPrint
                     Directory.CreateDirectory(FolderPath);
                 }
 
-                var folderData = FileResx.win64_v51;
+                // For other OS we assume weasyprint is installed and available in PATH
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    var folderData = FileResx.win64_v51;
 
-                var compressedFileName = Path.Combine(FolderPath, "data.zip");
+                    var compressedFileName = Path.Combine(FolderPath, "data.zip");
 
-                File.WriteAllBytes(compressedFileName, folderData);
+                    File.WriteAllBytes(compressedFileName, folderData);
 
-                ZipFile.ExtractToDirectory(compressedFileName, FolderPath);
+                    ZipFile.ExtractToDirectory(compressedFileName, FolderPath);
 
-                File.Delete(compressedFileName);
-
+                    File.Delete(compressedFileName);
+                }
             });
         }
 
@@ -54,19 +58,22 @@ namespace Balbarak.WeasyPrint
             if (!Directory.Exists(FolderPath))
                 return false;
 
-            var files = Directory.GetFiles(FolderPath);
+            // For other OS we assume weasyprint is installed and available in PATH
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                var files = Directory.GetFiles(FolderPath);
 
-            var dirs = Directory.GetDirectories(FolderPath);
+                var dirs = Directory.GetDirectories(FolderPath);
 
-            var hasPython = files.Where(a => a.Contains("python.exe")).FirstOrDefault() != null;
-            var hasScripts = dirs.Where(a => a.Contains("Scripts")).FirstOrDefault() != null;
+                var hasPython = files.Where(a => a.Contains("python.exe")).FirstOrDefault() != null;
+                var hasScripts = dirs.Where(a => a.Contains("Scripts")).FirstOrDefault() != null;
 
-            if (!hasScripts)
-                return false;
+                if (!hasScripts)
+                    return false;
 
-            if (!hasPython)
-                return false;
-
+                if (!hasPython)
+                    return false;
+            }
 
             return true;
         }
@@ -78,7 +85,7 @@ namespace Balbarak.WeasyPrint
                 var path = Path.Combine(FolderPath, fileName);
 
                 File.WriteAllBytes(path, data);
-
+                
                 return path;
             });
         }
