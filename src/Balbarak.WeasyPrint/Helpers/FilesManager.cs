@@ -36,7 +36,7 @@ namespace Balbarak.WeasyPrint
                     Directory.CreateDirectory(FolderPath);
                 }
 
-                var folderData = FileResx.win64_v51;
+                var folderData = FileResx.weasyprint_python_binary;
 
                 var compressedFileName = Path.Combine(FolderPath, "data.zip");
 
@@ -111,7 +111,7 @@ namespace Balbarak.WeasyPrint
         {
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-            var folderName = "balbarak-weasyprintv51";
+            var folderName = "netwrapper-weasyprint";
 
             var fullPath = Path.Combine(appDataPath, folderName);
 
