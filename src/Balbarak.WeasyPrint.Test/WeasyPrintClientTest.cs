@@ -8,8 +8,8 @@ namespace Balbarak.WeasyPrint.Test
 {
     public class WeasyPrintClientTest
     {
-        private readonly string _inputFolder = @"C:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\inputs";
-        private readonly string _outputFolder = @"C:\Repos\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\outputs";
+        private readonly string _inputFolder = @"C:\Users\MatijsLode\Source\OpenSource\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\inputs";
+        private readonly string _outputFolder = @"C:\Users\MatijsLode\Source\OpenSource\WeasyPrint-netcore\src\Balbarak.WeasyPrint.Test\outputs";
 
         [Fact]
         public async Task Should_Create_Pdf_From_Input_Text_Async()
